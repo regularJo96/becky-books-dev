@@ -45,6 +45,14 @@ input[type="text"] {
     background-color: #0c7dd9;
 }
 
+.bg-white{
+    background-color: white;
+}
+
+.text-white{
+    color: white;
+}
+
 img{
     margin: auto;
 }
@@ -114,7 +122,6 @@ img{
 
 .menu{
     display: grid;
-    text-align: center;
     grid-template-columns: 65% 35%;
     grid-template-rows: 33.33% 33.33% 33.33%;
 }
@@ -135,12 +142,10 @@ img{
 
 .name{
     display: grid;
-    align-items: center;
-    text-align: center;
     font-size: 32pt;
     grid-column: 1 / 2;
     grid-row: 1 / 4;
-    padding-left: 25%;
+    padding-left: 15px;
     justify-content: start;
 }
 
@@ -239,18 +244,21 @@ img{
 }
 
 .btn-sm:hover{
-    background-color: #3c831ba1;
-    box-shadow: 0px 0px 5px 1px rgba(60,131,27,0.75);
+    background-color: rgb(95, 95, 95);
+    color: white;
+    box-shadow: 0px 0px 5px 1px rgb(95, 95, 95);
 }
 
 .btn:hover{
-    background-color: #3c831ba1;
-    box-shadow: 0px 0px 5px 1px rgba(60,131,27,0.75);
+    background-color: rgb(95, 95, 95);
+    color: white;
+    box-shadow: 0px 0px 5px 1px rgb(95, 95, 95);
 }
 
 .btn-clicked{
-    background-color: #3c831ba1;
-    box-shadow: 0px 0px 5px 1px rgba(60,131,27,0.75);
+    background-color: rgb(95, 95, 95);
+    color: white;
+    box-shadow: 0px 0px 5px 1px rgb(95, 95, 95);
 }
 
 .btn-sm-clicked{

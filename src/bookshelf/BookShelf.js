@@ -2,8 +2,8 @@ import React, { useState, useEffect} from "react";
 import "../shared/assets/style.css"
 
 function InfoBar(){
-  var defaultTab = "btn bg-color-1 text-center pointer";
-  var activeTab = "btn btn-clicked bg-color-1 text-center pointer";
+  var defaultTab = "btn bg-white text-center pointer";
+  var activeTab = "btn btn-clicked bg-white text-center pointer";
 
   const setActive = (e) => {
 
@@ -18,16 +18,16 @@ function InfoBar(){
     <>
         <div id="menu" className="menu bg-dark-blue">
           
-          <div className="name text-green">
+          <div className="name text-white">
             <h2>
-              Becky Books
+              my books are here
             </h2>
           </div>
 
           <div className="shelf-buttons">
-            <div id="to-read" className={activeTab} onClick={setActive}>To Read</div>
-            <div id="am-reading" className={defaultTab} onClick={setActive}>Am Reading</div>
-            <div id="have-read" className={defaultTab} onClick={setActive}>Have Read</div>
+            <div id="to-read" className={activeTab} onClick={setActive}>i want to read</div>
+            <div id="am-reading" className={defaultTab} onClick={setActive}>i am read</div>
+            <div id="have-read" className={defaultTab} onClick={setActive}>i have read</div>
           </div>
 
         </div>
@@ -39,48 +39,88 @@ function Shelf(){
 
   const [books, setBooks] = useState()
   const [searchStr, setSearchStr] = useState()
+  const [loading, setLoading] = useState(false)
 
   function findBooks(str){
+    setLoading(true)
     fetch(`https://openlibrary.org/search.json?q=${str}&limit=20`)
       .then(response => response.json())
       .then(json => setBooks(json))
+    setLoading(false)
   }
 
   console.log(books)
-
-  if(books == null){
-    return(
-      <>
-          <div className="search-bar">
-            <form>
-              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-            </form>
-            <div className="btn-sm bg-color-1 text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+  if(loading == false){
+    if(books == null){
+      return(
+        <>
+            <div className="search-bar">
+              <form>
+                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              </form>
+              <div className="btn-sm bg-white text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+            </div>
+          <div>
+              no books
           </div>
-        <div>
-            no books
-        </div>
-      </>
-    );
-  } else {
-    return(
-      <>
-          <div className="search-bar">
-            <form>
-              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-            </form>
-            <div className="btn-sm bg-color-1 text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+        </>
+      );
+    } else {
+      return(
+        <>
+            <div className="search-bar">
+              <form onSubmit={(() => findBooks(searchStr))}>
+                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              </form>
+              <div className="btn-sm bg-white text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+            </div>
+            <div className="shelf">
+              {
+                  (books.docs).map(function(book){
+                  return <Book book={book}/>
+                  })
+              }
+            </div>
+          
+        </>
+      );
+    }
+  }
+  else{
+    if(books == null){
+      return(
+        <>
+            <div className="search-bar">
+              <form>
+                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              </form>
+              <div className="btn-sm bg-white text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+            </div>
+          <div>
+              loading books...
           </div>
-          <div className="shelf">
-            {
-              (books.docs).map(function(book){
-                return <Book book={book}/>
-              })
-            }
-          </div>
-        
-      </>
-    );
+        </>
+      );
+    } else {
+      return(
+        <>
+            <div className="search-bar">
+              <form onSubmit={(() => findBooks(searchStr))}>
+                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              </form>
+              <div className="btn-sm bg-white text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+            </div>
+            <div className="shelf">
+              {
+                  (books.docs).map(function(book){
+                  return <Book book={book}/>
+                  })
+              }
+            </div>
+          
+        </>
+      );
+    }
   }
 }
 
