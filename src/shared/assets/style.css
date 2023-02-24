@@ -58,6 +58,14 @@ button {
     background-color: #0c7dd9;
 }
 
+.bg-white{
+    background-color: white;
+}
+
+.text-white{
+    color: white;
+}
+
 img{
     margin: auto;
 }
@@ -161,12 +169,10 @@ img{
 
 .name{
     display: grid;
-    align-items: center;
-    text-align: center;
     font-size: 32pt;
     grid-column: 1 / 2;
     grid-row: 1 / 4;
-    padding-left: 25%;
+    padding-left: 15px;
     justify-content: start;
 }
 
