@@ -152,6 +152,9 @@ img{
 
 .shelf{
     display: grid;
+    width: 70%;
+    height: 80vh;
+    margin: auto;
     column-gap: 30px;
     row-gap: 50px;
 }
