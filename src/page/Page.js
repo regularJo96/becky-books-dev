@@ -74,7 +74,6 @@ function Shelf(props){
               })
             }
           </div>
-        
       </>
     );
   }
@@ -85,7 +84,6 @@ function Page() {
   const [books, setBooks] = useState([])
   const [pageContext, setPageContext] = useState("bookshelf");
 
-  
   useEffect(() => {
     findBooks();
   }, []);

@@ -23,7 +23,7 @@ var activeTab = "pointer text-white active";
   function show(){
 
   }
-  
+
   if(active){
     if(books.length==0){
       return(
@@ -82,6 +82,7 @@ var activeTab = "pointer text-white active";
     return (
       <>
         <div id="search" className={defaultTab} onClick={(() => setActive(true))}>
+          add a book
           <span className="material-symbols-outlined">
             search
           </span>
