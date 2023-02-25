@@ -11,22 +11,21 @@ var defaultTab = "pointer text-white default";
 var activeTab = "pointer text-white active";
 
   const [active, setActive] = useState(false)
-  const [books, setBooks] = useState()
+  const [books, setBooks] = useState([])
   const [searchStr, setSearchStr] = useState()
 
   function findBooks(str){
     fetch(`https://openlibrary.org/search.json?q=${str}&limit=20`)
-      .then(response => response.json())
-      .then(json => setBooks(json))
+    .then(response => response.json())
+    .then(json => setBooks(json))
   }
 
   function show(){
 
   }
-
-console.log(books)
+  
   if(active){
-    if(books == null){
+    if(books.length==0){
       return(
         <>
           <div id="search" className={activeTab} onClick={(() => setActive(false))}>
@@ -41,6 +40,8 @@ console.log(books)
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
             </form>
             <div className="btn-sm border-gold text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+
+            <p>NO BOOKS</p>
           </div>
         </>
       );

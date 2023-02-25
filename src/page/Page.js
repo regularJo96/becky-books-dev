@@ -1,23 +1,29 @@
 import React, { useState, useEffect} from "react";
 
 import SearchButton from "../searchButton/SearchButton";
+import Book from "../book/Book"
+import Blog from "../blog/Blog"
 
 import "../shared/assets/style.css"
 
-function InfoBar(){
+function InfoBar(props){
+
+
   var defaultTab = "btn border-white text-white text-center pointer";
   var activeTab = "btn border-white btn-clicked text-center pointer";
 
   const setActive = (e) => {
-
-    document.getElementById("shelves").className = defaultTab;
-    document.getElementById("blog").className = defaultTab;
-
-    e.target.className = activeTab;
+    if(e.target.id=="shelves"){
+      props.setPageContext("bookshelf")
+    }
+    else if(e.target.id=="blog"){
+      props.setPageContext("blog")
+    }
   }
 
-  return (
-    <>
+  if(props.pageContext == "bookshelf"){
+    return (
+      <>
         <div id="menu" className="menu bg-green-light">
             
           <div className="name text-white">
@@ -27,24 +33,29 @@ function InfoBar(){
           <div id="shelves" className={activeTab} onClick={setActive}>Bookshelves</div>
           <div id="blog" className={defaultTab} onClick={setActive}>blog</div>
         </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div id="menu" className="menu bg-green-light">
+            
+          <div className="name text-white">
+            becky's belles-place
+          </div>
+
+          <div id="shelves" className={defaultTab} onClick={setActive}>Bookshelves</div>
+          <div id="blog" className={activeTab} onClick={setActive}>blog</div>
+        </div>
+      </>
+    );
+  }
+
 }
 
-function Shelf(){
+function Shelf(props){
 
-  const [books, setBooks] = useState()
-  const [searchStr, setSearchStr] = useState()
-
-  function findBooks(str){
-    fetch(`https://openlibrary.org/search.json?q=${str}&limit=20`)
-      .then(response => response.json())
-      .then(json => setBooks(json))
-  }
-  
-  console.log(books)
-
-  if(books == null){
+  if(props.books.length == 0){
     return(
       <>
         <div className="text-center text-xlarge text-white">
@@ -56,12 +67,12 @@ function Shelf(){
     return(
       <>
           <div className="shelf">
-            {/* {
+            {
               // will need to query database for books
-              (books.docs).map(function(book){
+              (props.books).map(function(book){
                 return <Book book={book}/>
               })
-            } */}
+            }
           </div>
         
       </>
@@ -71,16 +82,42 @@ function Shelf(){
 
 function Page() {
 
-  return (
-  <div>
-    <div>
+  const [books, setBooks] = useState([])
+  const [pageContext, setPageContext] = useState("bookshelf");
 
-      <InfoBar />
-      <SearchButton />
-      <Shelf />
-    </div>
-  </div>
-  );
+  
+  useEffect(() => {
+    findBooks();
+  }, []);
+
+  function findBooks(){
+      fetch(`https://becky-books-server.herokuapp.com/books`)
+      .then(response => response.json())
+      .then(json => setBooks(json))
+  }
+  
+  if(pageContext=="bookshelf"){
+    return (
+        <div>
+          <div>
+            <InfoBar setPageContext={setPageContext} pageContext={pageContext}/>
+            <SearchButton />
+            <Shelf books={books}/>
+          </div>
+        </div>
+    );
+  } else{
+    return(
+        <>
+          <div>
+            <InfoBar setPageContext={setPageContext} pageContext={pageContext}/>
+            <Blog />
+          </div>
+        </>
+    );
+  }
+
+  
 }
 
 export default Page;
