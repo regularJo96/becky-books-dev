@@ -14,8 +14,10 @@ var activeTab = "pointer text-white active";
   const [books, setBooks] = useState([])
   const [searchStr, setSearchStr] = useState()
 
-  function findBooks(str){
-    fetch(`https://openlibrary.org/search.json?q=${str}&limit=20`)
+  const findBooks = (event) => {
+    event.preventDefault();
+
+    fetch(`https://openlibrary.org/search.json?q=${searchStr}&limit=20`)
     .then(response => response.json())
     .then(json => setBooks(json))
   }
@@ -36,10 +38,11 @@ var activeTab = "pointer text-white active";
           </div>
 
           <div className="search-bar search-box">
-            <form>
+            <form onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <button type="submit" className="btn-sm border-gold text-center pointer">Retrieve Books</button>
             </form>
-            <div className="btn-sm border-gold text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
+            
 
             <p>NO BOOKS</p>
           </div>
@@ -57,10 +60,10 @@ var activeTab = "pointer text-white active";
           </div>
 
           <div className="search-bar search-box">
-            <form>
+            <form onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <button type="submit" className="btn-sm border-gold text-center pointer">Retrieve Books</button>
             </form>
-            <div className="btn-sm border-gold text-center pointer" onClick={(() => findBooks(searchStr))}>Retrieve Books</div>
 
             {
               // will need to query database for books
