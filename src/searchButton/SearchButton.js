@@ -40,7 +40,7 @@ var activeTab = "pointer text-white active";
           <div className="search-box">
             <form className="search-bar" onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-              <button type="submit" className="border-gold text-center pointer">Retrieve Books</button>
+              <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
             
 
@@ -62,7 +62,7 @@ var activeTab = "pointer text-white active";
           <div className="search-bar search-box">
             <form className="search-bar" onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-              <button type="submit" className="border-gold text-center pointer">Retrieve Books</button>
+              <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
 
             {

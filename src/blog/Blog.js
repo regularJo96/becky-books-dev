@@ -4,7 +4,9 @@ import "../shared/assets/style.css"
 function Blog(){
   return(
     <>
-      <div>This is the blog page</div>
+      <div>
+        <trix-editor></trix-editor>
+      </div>
     </>
   );
 }

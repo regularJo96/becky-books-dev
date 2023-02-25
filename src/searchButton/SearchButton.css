@@ -38,7 +38,7 @@ input{
 input[type="text"] {
   font-size: 14pt;
   height: 30px;
-  width: 600px;
+  width: 100%;
 }
 
 @media only screen and (max-width: 620px) {
