@@ -24,7 +24,7 @@ function InfoBar(props){
   if(props.pageContext == "bookshelf"){
     return (
       <>
-        <div id="menu" className="menu bg-green-light">
+        <div id="menu" className="menu bg-wine">
             
           <div className="name text-white">
             becky's belles-place
@@ -38,7 +38,7 @@ function InfoBar(props){
   } else {
     return (
       <>
-        <div id="menu" className="menu bg-green-light">
+        <div id="menu" className="menu bg-wine">
             
           <div className="name text-white">
             becky's belles-place

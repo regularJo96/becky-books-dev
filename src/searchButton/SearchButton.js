@@ -31,16 +31,16 @@ var activeTab = "pointer text-white active";
       return(
         <>
           <div id="search" className={activeTab} onClick={(() => setActive(false))}>
-            <span className="search-prompt">search for a book/author/title etc.</span>
+            <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
             <span className="material-symbols-outlined">
               close
             </span>
           </div>
 
-          <div className="search-bar search-box">
-            <form onSubmit={findBooks}>
+          <div className="search-box">
+            <form className="search-bar" onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-              <button type="submit" className="btn-sm border-gold text-center pointer">Retrieve Books</button>
+              <button type="submit" className="border-gold text-center pointer">Retrieve Books</button>
             </form>
             
 
@@ -60,9 +60,9 @@ var activeTab = "pointer text-white active";
           </div>
 
           <div className="search-bar search-box">
-            <form onSubmit={findBooks}>
+            <form className="search-bar" onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-              <button type="submit" className="btn-sm border-gold text-center pointer">Retrieve Books</button>
+              <button type="submit" className="border-gold text-center pointer">Retrieve Books</button>
             </form>
 
             {

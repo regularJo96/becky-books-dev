@@ -54,6 +54,14 @@ button {
     text-overflow: ellipsis;
 }
 
+.bg-wine{
+    background-color: #722f37;
+}
+
+.bg-latte{
+    background-color: #ccae88;
+}
+
 .bg-dark-blue{
     background-color: #0c7dd9;
 }
@@ -194,6 +202,10 @@ img{
         padding: 15px;
         font-size: large;
     }
+    .menu {
+        display: flex;
+        row-gap: 10px;
+    }
 
     .shelf{
         display: grid;
@@ -206,11 +218,6 @@ img{
         display: flex;
         flex-direction: column;
         row-gap: 10px;
-    }
-
-    .menu > #shelves,#add{
-        margin: auto;
-        width: 75%;
     }
 
     .name{
