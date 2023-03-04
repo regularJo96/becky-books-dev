@@ -70,7 +70,7 @@ var activeTab = "pointer text-white active";
               (books.docs).map(function(book){
                 return <>
                         <div id="add-book-to-read" onMouseEnter={show()}>Add to 'to read'</div>
-                        <Book book={book}/>
+                        <Book title={book.title} author={book.author} cover={book.cover_i} key={book.key}/>
                         {/* add to shelf button component */}
                         {/* <Add book={book}/> */}
                       </>
