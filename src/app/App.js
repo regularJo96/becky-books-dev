@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 
 import SearchButton from "../searchButton/SearchButton";
 import InfoBar from "../infoBar/InfoBar";
+import ShelfBar from "../shelf/ShelfBar";
 import Shelf from "../shelf/Shelf";
 import Blog from "../blog/Blog";
 
@@ -12,14 +13,17 @@ import "../shared/assets/style.css"
 function App() {
 
   const [books, setBooks] = useState([])
-  const [tabContext, setTabContext] = useState("bookshelf");
+  const [infoBarContext, setInfoBarContext] = useState("bookshelf");
+  const [shelfContext, setShelfContext] = useState("to-read");
+
+  const API_URL = "http://localhost:3001";
 
   useEffect(() => {
     getBooks();
   }, []);
 
   function getBooks() {
-    fetch('http://localhost:3001/books')
+    fetch(`${API_URL}/books`)
       .then(response => {
         return response.json();
       })
@@ -35,7 +39,7 @@ function App() {
   
   function addToRead(author, title) {
     console.log(author + "" +title)
-    fetch("https//localhost:3001/book", {
+    fetch(`${API_URL}/book`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,11 +54,12 @@ function App() {
       });
   }
   
-  if(tabContext=="bookshelf"){
+  if(infoBarContext=="bookshelf"){
     return (
       <>
         <div>
-          <InfoBar setTabContext={setTabContext} tabContext={tabContext}/>
+          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
+          <ShelfBar setShelfContext={setShelfContext} shelfContext={shelfContext}/>
           <SearchButton />
           <Shelf books={books}/>
         </div>
@@ -64,7 +69,7 @@ function App() {
     return(
       <>
         <div>
-          <InfoBar setTabContext={setTabContext} tabContext={tabContext}/>
+          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
           <Blog />
         </div>
       </>

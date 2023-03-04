@@ -3,7 +3,7 @@ import React, { useState, useEffect} from "react";
 import Book from "../book/Book"
 
 function Shelf(props){
-  var key="none"
+
   if(props.books.length == 0){
     return(
       <>
@@ -19,7 +19,7 @@ function Shelf(props){
             {
               // will need to query database for books
               (props.books).map(function(book){
-                return <Book author={book.author} title={book.title}/>
+                return <Book book={book} location={"shelf"}/>
               })
             }
           </div>

@@ -7,8 +7,8 @@ import "../shared/assets/style.css"
 
 function SearchButton(){
   
-var defaultTab = "pointer text-white default";
-var activeTab = "pointer text-white active";
+var defaultTab = "text-white default";
+var activeTab = "text-white active";
 
   const [active, setActive] = useState(false)
   const [books, setBooks] = useState([])
@@ -22,24 +22,20 @@ var activeTab = "pointer text-white active";
     .then(json => setBooks(json))
   }
 
-  function show(){
-
-  }
-
   if(active){
     if(books.length==0){
       return(
         <>
-          <div id="search" className={activeTab} onClick={(() => setActive(false))}>
+          <div id="search" className={activeTab}>
             <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-            <span className="material-symbols-outlined">
+            <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
               close
             </span>
           </div>
 
           <div className="search-box">
             <form className="search-bar" onSubmit={findBooks}>
-              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <input type="text" autocomplete="off" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
               <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
             
@@ -53,15 +49,16 @@ var activeTab = "pointer text-white active";
 
       return (
         <>
-          <div id="search" className={activeTab} onClick={(() => setActive(false))}>
-            <span className="material-symbols-outlined">
+          <div id="search" className={activeTab}>
+            <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+            <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
               close
             </span>
           </div>
 
           <div className="search-bar search-box">
             <form className="search-bar" onSubmit={findBooks}>
-              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <input type="text" autocomplete="off" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
               <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
 
@@ -69,10 +66,7 @@ var activeTab = "pointer text-white active";
               // will need to query database for books
               (books.docs).map(function(book){
                 return <>
-                        <div id="add-book-to-read" onMouseEnter={show()}>Add to 'to read'</div>
-                        <Book title={book.title} author={book.author} cover={book.cover_i} key={book.key}/>
-                        {/* add to shelf button component */}
-                        {/* <Add book={book}/> */}
+                        <Book book={book} location={"search"}/>
                       </>
               })
             }
@@ -84,9 +78,9 @@ var activeTab = "pointer text-white active";
   else {
     return (
       <>
-        <div id="search" className={defaultTab} onClick={(() => setActive(true))}>
-          add a book
-          <span className="material-symbols-outlined">
+        <div id="search" className={defaultTab}>
+          <span className="search-prompt">add book</span>
+          <span className="material-symbols-outlined pointer" onClick={(() => setActive(true))}>
             search
           </span>
           

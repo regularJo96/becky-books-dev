@@ -2,9 +2,12 @@ import React, { useState, useEffect} from "react";
 
 function Book(props){
 
-  // useEffect(() => {
-  //   getBook();
-  // }, []);
+  // if(props.book.manualEntry==false){
+  //   useEffect(() => {
+  //     getBook();
+  //   }, []);
+  // }
+
 
   // function getBook() {
   //   if(props.key!="none"){
@@ -17,41 +20,79 @@ function Book(props){
   //       });
   //   }
   // }
+
+  const addToToRead = () => {
+    console.log(`Adding ${props.book.title} to database.`)
+  }
   
-  // if(props.cover)
-  let title = props.title;
-  let author = props.author;
+  let title = props.book.title;
+  let author = props.book.author;
   let cover_id = "No Cover Found";
   let description = ""
 
-  if(cover_id == "No Cover Found"){
-    return(
-      <>
-        <div className="book">
-          <div className="book-item text-bold default-image bg-green-dark border-gold pointer">{title}
-            <div className="tooltip">{title}</div>
+  if(props.location == "shelf"){
+    if(cover_id == "No Cover Found"){
+      return(
+        <>
+          <div className="book">
+            <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
+
+              <div className="tooltip pointer" onClick={addToToRead}>Add to Have Read</div>
+            </div>
+            
+            <div id="title" className="book-item text-bold overflow-title">{title}</div>
+            {/* <p>{description}</p> */}
+            <div id="author" className="book-item overflow-title">{author}</div>
+            {/* <div className="book-item">ISBN: {isbn}</div> */}
           </div>
-          
-          <div id="title" className="book-item text-bold overflow-title">{title}</div>
-          {/* <p>{description}</p> */}
-          <div id="author" className="book-item overflow-title">{author}</div>
-          {/* <div className="book-item">ISBN: {isbn}</div> */}
-        </div>
-      </>
-    );
-  } else{
-    return(
-      <>
-        <div className="book">
-        <div className="tooltip">{title}</div>
-          <img className="book-item border-gold pointer" src={`https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img>
-          <div id="title" className="book-item text-bold overflow-title">{title}</div>
-          {/* <p>{description}</p> */}
-          <div className="book-item overflow-title">{author}</div>
-          {/* <div className="book-item">ISBN: {isbn}</div> */}
-        </div>
-      </>
-    );
+        </>
+      );
+    } else{
+      return(
+        <>
+          <div className="book">
+          <div className="tooltip">{title}</div>
+            <img className="book-item border-gold pointer" src={`https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img>
+            <div id="title" className="book-item text-bold overflow-title">{title}</div>
+            {/* <p>{description}</p> */}
+            <div className="book-item overflow-title">{author}</div>
+            {/* <div className="book-item">ISBN: {isbn}</div> */}
+          </div>
+        </>
+      );
+    }
+  } 
+  else{
+    if(cover_id == "No Cover Found"){
+      return(
+        <>
+          <div className="book">
+            <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
+
+              <div className="tooltip pointer" onClick={addToToRead}>Add to To Read</div>
+            </div>
+            
+            <div id="title" className="book-item text-bold overflow-title">{title}</div>
+            {/* <p>{description}</p> */}
+            <div id="author" className="book-item overflow-title">{author}</div>
+            {/* <div className="book-item">ISBN: {isbn}</div> */}
+          </div>
+        </>
+      );
+    } else{
+      return(
+        <>
+          <div className="book">
+          <div className="tooltip">{title}</div>
+            <img className="book-item border-gold pointer" src={`https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img>
+            <div id="title" className="book-item text-bold overflow-title">{title}</div>
+            {/* <p>{description}</p> */}
+            <div className="book-item overflow-title">{author}</div>
+            {/* <div className="book-item">ISBN: {isbn}</div> */}
+          </div>
+        </>
+      );
+    }
   }
 }
 

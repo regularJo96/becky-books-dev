@@ -37,6 +37,10 @@
     visibility: hidden;
 }
 
+.rounded{
+    border-radius: 2px;
+}
+
 .btn-sm{
     display: flex;
     height: 35px;
@@ -166,9 +170,19 @@ img{
     row-gap: 50px;
 }
 
+.shelf-menu{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    column-gap: 5px;
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+}
+
 .menu{
     display: grid;
     grid-template-columns: 400px 200px 200px;
+    column-gap: 5px;
     text-align: center;
     padding: 15px;
 }
