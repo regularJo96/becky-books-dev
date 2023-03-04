@@ -16,7 +16,7 @@ function App() {
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
 
-  const API_URL = "http://localhost:3001";
+  const API_URL = "https://becky-books-server.herokuapp.com";
 
   useEffect(() => {
     getBooks();
