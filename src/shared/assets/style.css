@@ -28,10 +28,6 @@
     margin: auto;
 }
 
-button {
-    background-color: rgb(255, 217, 0);
-}
-
 .text-center{
     text-align: center;
 }
@@ -39,6 +35,10 @@ button {
 
 .invisible{
     visibility: hidden;
+}
+
+.rounded{
+    border-radius: 2px;
 }
 
 .btn-sm{
@@ -170,9 +170,19 @@ img{
     row-gap: 50px;
 }
 
+.shelf-menu{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    column-gap: 5px;
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+}
+
 .menu{
     display: grid;
     grid-template-columns: 400px 200px 200px;
+    column-gap: 5px;
     text-align: center;
     padding: 15px;
 }
@@ -206,7 +216,8 @@ img{
         font-size: large;
     }
     .menu {
-        display: flex;
+        display: grid;
+        grid-template-rows: auto 200px 200px;
         row-gap: 10px;
     }
 
