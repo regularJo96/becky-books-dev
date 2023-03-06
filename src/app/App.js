@@ -12,18 +12,20 @@ import "../shared/assets/style.css"
 
 function App() {
 
-  const [books, setBooks] = useState([])
+  const [API_URL, setAPI_URL] = useState("https://regularjo96.github.io");
+  const [books, setBooks] = useState([]);
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
+  const [location, setLocation] = useState("shelf")
 
-  const API_URL = "https://becky-books-server.herokuapp.com";
-
+  // TODO: fire the useEffect when shelfContext changes? pass in shelfContext as string arg to getBooks() to 
+  // display books connected to that shelf. Need also update server to filter by argument sent along in body
   useEffect(() => {
     getBooks();
   }, []);
 
   function getBooks() {
-    fetch(`${API_URL}/books`)
+    fetch(`${API_URL}/`)
       .then(response => {
         return response.json();
       })
@@ -32,25 +34,34 @@ function App() {
       });
   }
   
-  function setCover(id){
-    console.log("WORKED")
-  }
-  
-  
-  function addToRead(author, title) {
-    console.log(author + "" +title)
-    fetch(`${API_URL}/book`, {
+  function addToToRead(title, author, description, shelf){
+
+    fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({author, title}),
+      body: JSON.stringify({title, author, description, shelf}),
     })
       .then(response => {
         return response.text();
       })
       .then(data => {
         alert(data);
+        getBooks();
+      });
+  }
+
+  function deleteBook(id) {
+    fetch(`${API_URL}/books/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        alert(data);
+        getBooks();
       });
   }
   
@@ -58,10 +69,10 @@ function App() {
     return (
       <>
         <div>
-          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
-          <ShelfBar setShelfContext={setShelfContext} shelfContext={shelfContext}/>
-          <SearchButton />
-          <Shelf books={books}/>
+          <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
+          <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
+          <SearchButton addToToRead={addToToRead} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          <Shelf books={books} addToToRead={addToToRead} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );
@@ -69,7 +80,7 @@ function App() {
     return(
       <>
         <div>
-          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
+          <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <Blog />
         </div>
       </>
