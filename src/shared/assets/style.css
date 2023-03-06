@@ -163,12 +163,13 @@ img{
 
 .shelf{
     display: grid;
-    width: 70%;
-    height: 80vh;
-    margin: auto;
+    width: 100%;
+    height: auto;
     column-gap: 30px;
+    margin-top: 50px;
     row-gap: 50px;
 }
+
 
 .shelf-menu{
     display: grid;
