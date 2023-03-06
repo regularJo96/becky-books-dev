@@ -46,7 +46,7 @@ function ShelfBar(props){
       <>
         <div className="shelf-menu">
           <div id="to-read" className={defaultTab} onClick={setActive}>To Read</div>
-          <div id="am-reading" className={defaultTab} onClick={setActive}>Am Read</div>
+          <div id="am-reading" className={defaultTab} onClick={setActive}>Am Read(ing)</div>
           <div id="have-read" className={activeTab} onClick={setActive}>Have Read</div>
         </div>
       </>
