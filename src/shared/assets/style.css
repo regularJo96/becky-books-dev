@@ -171,15 +171,6 @@ img{
 }
 
 
-.shelf-menu{
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    column-gap: 5px;
-    text-align: center;
-    margin: auto;
-    padding: 15px;
-}
-
 .menu{
     display: grid;
     grid-template-columns: 400px 200px 200px;
@@ -226,6 +217,14 @@ img{
         display: grid;
         grid-template-columns: auto;
     }
+    
+    .shelf-menu{
+        display: grid;
+        margin: 15px;
+        grid-template-rows: auto auto auto;
+        row-gap: 10px;
+    }
+    
 }
 
 @media only screen and (max-width: 800px){
@@ -241,6 +240,12 @@ img{
         padding: 25px;
         margin: auto;
     }
+    .shelf-menu{
+        display: grid;
+        margin: 15px;
+        grid-template-rows: auto auto auto;
+        row-gap: 10px;
+    }
 }
 
 @media only screen and (min-width: 620px) {
@@ -248,11 +253,26 @@ img{
         grid-template-columns: auto auto auto;
     }
 
+    .shelf-menu{
+        display: grid;
+        margin: 15px;
+        grid-template-rows: auto auto auto;
+        row-gap: 10px;
+    }
 }
 
 @media only screen and (min-width: 700px) {
     .shelf{
         grid-template-columns: auto auto auto auto;
+    }
+
+    .shelf-menu{
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        column-gap: 5px;
+        text-align: center;
+        margin: auto;
+        padding: 15px;
     }
 }
 
@@ -260,17 +280,44 @@ img{
     .shelf{
         grid-template-columns: auto auto auto auto auto;
     }
+
+    .shelf-menu{
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        column-gap: 5px;
+        text-align: center;
+        margin: auto;
+        padding: 15px;
+    }
 }
 
 @media only screen and (min-width: 1050px) {
     .shelf{
         grid-template-columns: auto auto auto auto auto auto;
     }
+
+    .shelf-menu{
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        column-gap: 5px;
+        text-align: center;
+        margin: auto;
+        padding: 15px;
+    }
 }
 
 @media only screen and (min-width: 1250px) {
     .shelf{
         grid-template-columns: auto auto auto auto auto auto auto;
+    }
+
+    .shelf-menu{
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        column-gap: 5px;
+        text-align: center;
+        margin: auto;
+        padding: 15px;
     }
 }
 
