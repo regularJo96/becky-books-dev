@@ -17,9 +17,8 @@ function Shelf(props){
       <>
           <div className="shelf">
             {
-              // will need to query database for books
               (props.books).map(function(book){
-                return <Book book={book} location={"shelf"}/>
+                return <Book book={book} addToToRead={props.addToToRead} location={props.location}/>
               })
             }
           </div>

@@ -12,15 +12,29 @@ import "../shared/assets/style.css"
 
 function App() {
 
-  const [books, setBooks] = useState([])
+  const [API_URL, setAPI_URL] = useState("http://localhost:3001");
+  const [books, setBooks] = useState([]);
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
+  const [location, setLocation] = useState("shelf")
 
-  const API_URL = "http://localhost:3001";
-
+  // TODO: fire the useEffect when shelfContext changes? pass in shelfContext as string arg to getBooks() to 
+  // display books connected to that shelf. Need also update server to filter by argument sent along in body
   useEffect(() => {
     getBooks();
   }, []);
+
+  function addTicks(str) {
+    let replace = ""
+    for(let i=0;i<str.length;i++){
+      replace += str[i]
+      if(str[i] == '\'' && str[i-1]!='\''){
+        console.log("YES")
+        replace += '\''
+      }
+    }
+    return replace
+  }
 
   function getBooks() {
     fetch(`${API_URL}/books`)
@@ -32,25 +46,21 @@ function App() {
       });
   }
   
-  function setCover(id){
-    console.log("WORKED")
-  }
-  
-  
-  function addToRead(author, title) {
-    console.log(author + "" +title)
+  function addToToRead(title, author, description, shelf){
+
     fetch(`${API_URL}/book`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({author, title}),
+      body: JSON.stringify({title, author, description, shelf}),
     })
       .then(response => {
         return response.text();
       })
       .then(data => {
         alert(data);
+        getBooks();
       });
   }
   
@@ -58,10 +68,10 @@ function App() {
     return (
       <>
         <div>
-          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
-          <ShelfBar setShelfContext={setShelfContext} shelfContext={shelfContext}/>
-          <SearchButton />
-          <Shelf books={books}/>
+          <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
+          <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
+          <SearchButton addToToRead={addToToRead} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          <Shelf books={books} addToToRead={addToToRead} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );
@@ -69,7 +79,7 @@ function App() {
     return(
       <>
         <div>
-          <InfoBar setInfoBarContext={setInfoBarContext} infoBarContext={infoBarContext}/>
+          <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <Blog />
         </div>
       </>

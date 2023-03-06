@@ -5,7 +5,7 @@ import Book from "../book/Book.js"
 import "./SearchButton.css"
 import "../shared/assets/style.css"
 
-function SearchButton(){
+function SearchButton(props){
   
 var defaultTab = "text-white default";
 var activeTab = "text-white active";
@@ -18,8 +18,13 @@ var activeTab = "text-white active";
     event.preventDefault();
 
     fetch(`https://openlibrary.org/search.json?q=${searchStr}&limit=20`)
-    .then(response => response.json())
-    .then(json => setBooks(json))
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setBooks(data);
+      });
+
   }
 
   if(active){
@@ -35,7 +40,7 @@ var activeTab = "text-white active";
 
           <div className="search-box">
             <form className="search-bar" onSubmit={findBooks}>
-              <input type="text" autocomplete="off" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
               <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
             
@@ -58,16 +63,20 @@ var activeTab = "text-white active";
 
           <div className="search-bar search-box">
             <form className="search-bar" onSubmit={findBooks}>
-              <input type="text" autocomplete="off" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+              <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
               <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
 
             {
-              // will need to query database for books
               (books.docs).map(function(book){
-                return <>
-                        <Book book={book} location={"search"}/>
-                      </>
+                // const book = {
+                //   title : item.title,
+                //   author : item.author_name[0],
+                //   description : "none",
+                //   shelf : "to-read"
+                // }
+                return <Book book={book} addToToRead={props.addToToRead} location={props.location}/>
+                      
               })
             }
           </div>
