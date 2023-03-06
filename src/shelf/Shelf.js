@@ -18,7 +18,7 @@ function Shelf(props){
           <div className="shelf">
             {
               (props.books).map(function(book){
-                return <Book book={book} addToToRead={props.addToToRead} location={props.location}/>
+                return <Book book={book} addToToRead={props.addToToRead} deleteBook={props.deleteBook} location={props.location}/>
               })
             }
           </div>

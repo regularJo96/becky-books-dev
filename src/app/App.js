@@ -24,20 +24,8 @@ function App() {
     getBooks();
   }, []);
 
-  function addTicks(str) {
-    let replace = ""
-    for(let i=0;i<str.length;i++){
-      replace += str[i]
-      if(str[i] == '\'' && str[i-1]!='\''){
-        console.log("YES")
-        replace += '\''
-      }
-    }
-    return replace
-  }
-
   function getBooks() {
-    fetch(`${API_URL}/books`)
+    fetch(`${API_URL}/`)
       .then(response => {
         return response.json();
       })
@@ -48,12 +36,25 @@ function App() {
   
   function addToToRead(title, author, description, shelf){
 
-    fetch(`${API_URL}/book`, {
+    fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({title, author, description, shelf}),
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        alert(data);
+        getBooks();
+      });
+  }
+
+  function deleteBook(id) {
+    fetch(`${API_URL}/books/${id}`, {
+      method: 'DELETE',
     })
       .then(response => {
         return response.text();
@@ -71,7 +72,7 @@ function App() {
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
           <SearchButton addToToRead={addToToRead} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
-          <Shelf books={books} addToToRead={addToToRead} shelfContext={shelfContext} location={location}/>
+          <Shelf books={books} addToToRead={addToToRead} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );

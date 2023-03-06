@@ -33,13 +33,12 @@ function Book(props){
   let description = "none"
   let shelf = "to read"
 
-  console.log(author)
   if(cover_id == "No Cover Found"){
     return(
       <>
         <div className="book">
           <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
-
+            <div className="pointer" onClick={() => {props.deleteBook(props.book.id)}}>Remove Book</div>
             <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to Have Read</div>
           </div>
           
