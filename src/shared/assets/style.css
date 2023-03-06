@@ -291,7 +291,7 @@ img{
     }
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1080px) {
     .shelf{
         grid-template-columns: auto auto auto auto auto auto;
     }
