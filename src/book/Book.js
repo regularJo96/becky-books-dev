@@ -36,7 +36,7 @@ function Book(props){
           <div className="book">
             <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
               <div className="pointer" onClick={() => {props.deleteBook(props.book.id)}}>Remove Book</div>
-              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to Have Read</div>
+              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to To Read</div>
             </div>
             
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
@@ -67,7 +67,7 @@ function Book(props){
         <>
           <div className="book">
             <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
-              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to Have Read</div>
+              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to To Read</div>
             </div>
             
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
