@@ -12,7 +12,7 @@ import "../shared/assets/style.css"
 
 function App() {
 
-  const [API_URL, setAPI_URL] = useState("https://regularjo96.github.io");
+  const [API_URL, setAPI_URL] = useState("https://becky-books-server.herokuapp.com");
   const [books, setBooks] = useState([]);
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
