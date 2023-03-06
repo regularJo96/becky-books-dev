@@ -14,6 +14,20 @@ var activeTab = "text-white active";
   const [books, setBooks] = useState([])
   const [searchStr, setSearchStr] = useState()
 
+  useEffect(() => {
+    changeLocation();
+  }, [active]);
+
+  function changeLocation(){
+    if(active){
+      props.setLocation("search")
+    }
+    else{
+      props.setLocation("shelf")
+    }
+    console.log(props.location)
+  }
+
   const findBooks = (event) => {
     event.preventDefault();
 

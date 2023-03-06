@@ -14,14 +14,14 @@ function Shelf(props){
     );
   } else {
     return(
-      <>
-          <div className="shelf">
-            {
-              (props.books).map(function(book){
-                return <Book book={book} addToToRead={props.addToToRead} deleteBook={props.deleteBook} location={props.location}/>
-              })
-            }
-          </div>
+      <>  
+        <div className="shelf">
+          {
+            (props.books).map(function(book){
+              return <Book book={book} addToToRead={props.addToToRead} deleteBook={props.deleteBook} location={props.location}/>
+            })
+          }
+        </div>
       </>
     );
   }
