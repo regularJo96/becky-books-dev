@@ -12,7 +12,7 @@ import "../shared/assets/style.css"
 
 function App() {
 
-  const [API_URL, setAPI_URL] = useState("http://localhost:3001");
+  const [API_URL, setAPI_URL] = useState("https://regularjo96.github.io");
   const [books, setBooks] = useState([]);
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
