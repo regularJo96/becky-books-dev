@@ -47,7 +47,7 @@ function App() {
         return response.text();
       })
       .then(data => {
-        alert(data);
+        alert(`${title} added`);
         getBooks();
       });
   }
@@ -60,7 +60,7 @@ function App() {
         return response.text();
       })
       .then(data => {
-        alert(data);
+        alert("book removed from shelf");
         getBooks();
       });
   }

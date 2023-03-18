@@ -59,8 +59,8 @@ var activeTab = "text-white active";
             </span>
           </div>
 
-          <div className="search-box">
-            <form className="search-bar" onSubmit={findBooks}>
+          <div>
+            <form onSubmit={findBooks}>
               <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
               <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
             </form>
@@ -83,13 +83,17 @@ var activeTab = "text-white active";
               </span>
             </div>
 
-            <div className="search-bar search-box">
-              <form className="search-bar" onSubmit={findBooks}>
-                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
-              </form>
+            <div className="outer">
+              <div>
+                <form onSubmit={findBooks}>
+                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                </form>
+              </div>
 
+              <div>
               Finding Books...
+              </div>
             </div>
           </>
         );
@@ -105,24 +109,28 @@ var activeTab = "text-white active";
               </span>
             </div>
 
-            <div className="search-bar search-box">
-              <form className="search-bar" onSubmit={findBooks}>
-                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
-              </form>
+            <div className="outer">
+              <div>
+                <form onSubmit={findBooks}>
+                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                </form>
+              </div>
 
-              {
-                (books.docs).map(function(book){
-                  // const book = {
-                  //   title : item.title,
-                  //   author : item.author_name[0],
-                  //   description : "none",
-                  //   shelf : "to-read"
-                  // }
-                  return <Book book={book} addToToRead={props.addToToRead} location={props.location}/>
-                        
-                })
-              }
+              <div className="shelf">
+                {
+                  (books.docs).map(function(book){
+                    // const book = {
+                    //   title : item.title,
+                    //   author : item.author_name[0],
+                    //   description : "none",
+                    //   shelf : "to-read"
+                    // }
+                    return <Book book={book} addToToRead={props.addToToRead} location={props.location}/>
+                          
+                  })
+                }
+              </div>
             </div>
           </>
         );
