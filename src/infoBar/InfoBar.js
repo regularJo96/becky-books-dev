@@ -19,7 +19,7 @@ function InfoBar(props){
         <div id="menu" className="menu bg-wine">
             
           <div className="name text-white">
-            becky's belles-lettres
+            becky's belles-place
           </div>
 
           <div id="shelves" className={activeTab} onClick={setActive}>Bookshelves</div>
@@ -33,7 +33,7 @@ function InfoBar(props){
         <div id="menu" className="menu bg-wine">
             
           <div className="name text-white">
-            becky's belles-place
+            becky's belles-lettres
           </div>
 
           <div id="shelves" className={defaultTab} onClick={setActive}>Bookshelves</div>
