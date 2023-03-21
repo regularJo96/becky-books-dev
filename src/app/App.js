@@ -18,14 +18,12 @@ function App() {
   const [shelfContext, setShelfContext] = useState("to-read");
   const [location, setLocation] = useState("shelf")
 
-  // TODO: fire the useEffect when shelfContext changes? pass in shelfContext as string arg to getBooks() to 
-  // display books connected to that shelf. Need also update server to filter by argument sent along in body
   useEffect(() => {
     getBooks();
-  }, []);
+  }, [shelfContext]);
 
   function getBooks() {
-    fetch(`${API_URL}/`)
+      fetch(`${API_URL}/${shelfContext}`)
       .then(response => {
         return response.json();
       })
@@ -34,8 +32,7 @@ function App() {
       });
   }
   
-  function addToToRead(title, author, description, shelf){
-
+  const addToShelf = (title, author, description, shelf) => {
     fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {
@@ -47,7 +44,7 @@ function App() {
         return response.text();
       })
       .then(data => {
-        alert(`${title} added`);
+        alert(`${title} added to ${shelf}`);
         getBooks();
       });
   }
@@ -71,8 +68,8 @@ function App() {
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
-          <SearchButton addToToRead={addToToRead} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
-          <Shelf books={books} addToToRead={addToToRead} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
+          <SearchButton addToShelf={addToShelf} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          <Shelf books={books} addToShelf={addToShelf} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );

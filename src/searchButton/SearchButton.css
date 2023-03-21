@@ -1,18 +1,31 @@
 .default{
   display: block;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .active{
   display: block;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
-.outer{
+.search-container{
+  position: absolute;
   display: grid;
   grid-template-rows: auto auto;
+  background-color: antiquewhite;
+  width: 75%;
+  min-height: 75%;
+  max-height: fit-content;
+  padding-left: 200px;
+  padding-right: 200px;
+  z-index: 1;
+}
+
+.search-bar{
+  display: grid;
+  grid-template-columns: 75% 25%;
 }
 
 .text-white{
