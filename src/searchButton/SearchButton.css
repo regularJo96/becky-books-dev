@@ -1,33 +1,35 @@
 .default{
   display: block;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .active{
   display: block;
-  margin-left: 200px;
-  margin-right: 200px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
-.text-white{
-  color: white;
+.search-container{
+  position: absolute;
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: antiquewhite;
+  width: 75%;
+  min-height: 75%;
+  max-height: fit-content;
+  padding-left: 200px;
+  padding-right: 200px;
+  z-index: 1;
 }
+
 .search-bar{
   display: grid;
   grid-template-columns: 75% 25%;
 }
 
-.search-box{
-  display: block;
-  position: absolute;
-  z-index: 1;
-  width: 500px;
-  height: 75%;
-  margin-left: 200px;
-  background-color: rgb(90, 90, 90);
-  overflow: auto;
-  overflow-x: hidden;
+.text-white{
+  color: white;
 }
 
 input{
@@ -50,16 +52,5 @@ input[type="text"] {
   .active{
     display: block;
     margin: auto;
-  }
-
-  .search-box{
-    display: block;
-    position: absolute;
-    z-index: 1;
-    background-color: rgb(90, 90, 90);
-    width: 100vw;
-    margin: auto;
-    overflow: auto;
-    overflow-x: hidden;
   }
 }

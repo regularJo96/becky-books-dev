@@ -1,31 +1,36 @@
-.tooltip {
-    border: solid;
-    white-space: pre-wrap;
-    visibility: hidden;
-    width: 140px;
-    background-color: rgb(180, 153, 0);
-    text-align: center;
-    border-radius: 1px;
-    padding: 5px 0;
-  
-    /* Position the tooltip */
+.add-to-shelf{
     position: absolute;
-    z-index: 2;
-  }
-
-.add-book-to-read{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    width: 140px;
+    row-gap: 20px;
+    text-align: center;
     visibility: hidden;
 }
+
+.remove-from-shelf{
+    display: grid;
+    position: absolute;
+    width: 140px;
+    row-gap: 20px;
+    text-align: center;
+    visibility: hidden;
+}
+
+.remove{
+    height: 50px;
+}
+
+.add{
+    height: 50px;
+}
   
-.book-item:hover .tooltip {
+.book-item:hover .add-to-shelf {
     visibility: visible;
 }
-#add-book-to-read {
-    visibility: hidden;
-    position: relative;
-    z-index: 1;
-    margin-top: 10px;
-    margin: auto;
+
+.book-item:hover .remove-from-shelf{
+    visibility: visible;
 }
 
 .text-center{

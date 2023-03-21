@@ -2,21 +2,6 @@ import React, { useState, useEffect} from "react";
 
 function Book(props){
 
-  const [removeButtonContext, setRemoveButtonContext] = useState(true);
-
-  useEffect(() => {
-    changeRemove();
-  }, [props.location]);
-
-  function changeRemove(){
-    if(props.location == "search"){
-      setRemoveButtonContext(false);
-    }
-    else{
-      setRemoveButtonContext(true)
-    }
-  }
-
   let author = "";
   try{
     author = props.book.author_name[0]
@@ -28,15 +13,20 @@ function Book(props){
   let title = props.book.title;
   let cover_id = "No Cover Found";
   let description = "none"
-  let shelf = "to read"
-  if(removeButtonContext){
+  let shelf = ""
+
+  if(props.location == "search"){
     if(cover_id == "No Cover Found"){
       return(
         <>
           <div className="book">
-            <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
-              <div className="pointer" onClick={() => {props.deleteBook(props.book.id)}}>Remove Book</div>
-              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to Shelf</div>
+            <div className="book-item text-bold default-image bg-green-dark border-gold">
+              {title}
+              <div className="add-to-shelf">
+                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'to-read')}}>+ To Read</div>
+                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'am-reading')}}>+ Am Reading</div>
+                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'have-read')}}>+ Have Read</div>
+              </div>
             </div>
             
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
@@ -66,8 +56,11 @@ function Book(props){
       return(
         <>
           <div className="book">
-            <div className="book-item text-bold default-image bg-green-dark border-gold">{title}
-              <div className="tooltip pointer" onClick={() => {props.addToToRead(title, author, description, shelf)}}>Add to Shelf</div>
+            <div className="book-item text-bold default-image bg-green-dark border-gold">
+              {title}
+              <div className="remove-from-shelf">
+                <div className="remove bg-wine pointer" onClick={() => {props.deleteBook(props.book.id)}}>Remove Book</div>
+              </div>
             </div>
             
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
