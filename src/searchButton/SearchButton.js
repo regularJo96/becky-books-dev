@@ -50,29 +50,56 @@ var activeTab = "text-white active";
 
   if(active){
     if(books.length==0){
-      return(
-        <>
-          <div id="search" className={activeTab}>
-            <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-            <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
-              close
-            </span>
-          </div>
+      if(loading){
+        return(
+          <>
+            <div id="search" className={activeTab}>
+              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
+                close
+              </span>
+            </div>
+  
+            <div className="search-container">
+              <div>
+                <form className="search-bar" onSubmit={findBooks}>
+                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                </form>
+              </div>
+              
+              <div>
+                finding books...
+              </div>
+            </div>
+          </>
+        );
+      } else{
+        return(
+          <>
+            <div id="search" className={activeTab}>
+              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
+                close
+              </span>
+            </div>
+  
+            <div className="search-container">
+              <div>
+                <form className="search-bar" onSubmit={findBooks}>
+                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                </form>
+              </div>
+              
+              <div>
+                No Books
+              </div>
+            </div>
+          </>
+        );
+      }
 
-          <div className="search-container">
-            <div>
-              <form className="search-bar" onSubmit={findBooks}>
-                <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
-              </form>
-            </div>
-            
-            <div>
-              No Books
-            </div>
-          </div>
-        </>
-      );
     } 
     else {
 
@@ -95,7 +122,7 @@ var activeTab = "text-white active";
               </div>
 
               <div>
-                Finding Books...
+                finding books...
               </div>
             </div>
           </>

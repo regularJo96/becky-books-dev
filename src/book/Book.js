@@ -2,6 +2,21 @@ import React, { useState, useEffect} from "react";
 
 function Book(props){
 
+  const [adds, setAdds] = useState(["am-reading", "have-read"]);
+
+  useEffect(() => {
+    if(props.shelfContext=="to-read"){
+      setAdds(["am-reading", "have-read"]);
+    }
+    else if(props.shelfContext=="am-reading"){
+      setAdds(["to-read", "have-read"]);
+    }
+    else if(props.shelfContext=="have-read"){
+      setAdds(["to-read", "am-reading"]);
+    }
+    
+  }, [props.shelfContext]);
+  
   let author = "";
   try{
     author = props.book.author_name[0]
@@ -19,7 +34,7 @@ function Book(props){
     if(cover_id == "No Cover Found"){
       return(
         <>
-          <div className="book">
+          <div className="book-container">
             <div className="book-item text-bold default-image bg-green-dark border-gold">
               {title}
               <div className="add-to-shelf">
@@ -39,7 +54,7 @@ function Book(props){
     } else{
       return(
         <>
-          <div className="book">
+          <div className="book-container">
           <div className="tooltip">{title}</div>
             <img className="book-item border-gold pointer" src={`https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img>
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
@@ -55,12 +70,22 @@ function Book(props){
     if(cover_id == "No Cover Found"){
       return(
         <>
-          <div className="book">
-            <div className="book-item text-bold default-image bg-green-dark border-gold">
-              {title}
+          <div className="book-container">
+            <div className="book-item cover text-bold default-image bg-green-dark">
               <div className="remove-from-shelf">
-                <div className="remove bg-wine pointer" onClick={() => {props.deleteBook(props.book.id)}}>Remove Book</div>
+                <div className="remove pointer " onClick={() => {props.deleteBook(props.book.id)}}>
+                <span class="material-symbols-outlined">
+                  delete
+                </span>
+                </div>
               </div>
+
+              <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, adds[0])}}>+ {adds[0]}</div>
+                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, adds[1])}}>+ {adds[1]}</div>
+              <div className="padding-10px">
+                {title}
+              </div>
+             
             </div>
             
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
@@ -73,7 +98,7 @@ function Book(props){
     } else{
       return(
         <>
-          <div className="book">
+          <div className="book-container">
           <div className="tooltip">{title}</div>
             <img className="book-item border-gold pointer" src={`https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img>
             <div id="title" className="book-item text-bold overflow-title">{title}</div>
