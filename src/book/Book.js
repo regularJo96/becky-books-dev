@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from "react";
 
+import "./Book.css"
+
 function Book(props){
 
   const [adds, setAdds] = useState(["am-reading", "have-read"]);
@@ -35,7 +37,7 @@ function Book(props){
       return(
         <>
           <div className="book-container">
-            <div className="book-item text-bold default-image bg-green-dark border-gold">
+            <div className="book-item text-bold default-image bg-green-dark border-round title">
               {title}
               <div className="add-to-shelf">
                 <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'to-read')}}>+ To Read</div>
@@ -71,18 +73,21 @@ function Book(props){
       return(
         <>
           <div className="book-container">
-            <div className="book-item cover text-bold default-image bg-green-dark">
-              <div className="remove-from-shelf">
-                <div className="remove pointer " onClick={() => {props.deleteBook(props.book.id)}}>
+            <div className="book-item text-bold default-image bg-green-dark border-round cover">
+              <div className="remove pointer" onClick={() => {props.deleteBook(props.book.id)}}>
                 <span class="material-symbols-outlined">
                   delete
                 </span>
-                </div>
               </div>
 
-              <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, adds[0])}}>+ {adds[0]}</div>
-                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, adds[1])}}>+ {adds[1]}</div>
-              <div className="padding-10px">
+              <div className="bookmarks">
+                <div className="one bg-wine border-round pointer" onClick={() => {props.addToShelf(title, author, description, adds[0])}}>+ {adds[0]}</div>
+                <div className="two bg-wine border-round pointer" onClick={() => {props.addToShelf(title, author, description, adds[1])}}>+ {adds[1]}</div>
+              </div>
+
+
+              
+              <div className="padding-10px title">
                 {title}
               </div>
              
