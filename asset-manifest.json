@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/becky-books-dev/static/css/main.54943867.css",
-    "main.js": "/becky-books-dev/static/js/main.2e05ffde.js",
+    "main.css": "/becky-books-dev/static/css/main.3d789094.css",
+    "main.js": "/becky-books-dev/static/js/main.49079fd5.js",
     "static/js/787.3bf0dcc2.chunk.js": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js",
     "index.html": "/becky-books-dev/index.html",
-    "main.54943867.css.map": "/becky-books-dev/static/css/main.54943867.css.map",
-    "main.2e05ffde.js.map": "/becky-books-dev/static/js/main.2e05ffde.js.map",
+    "main.3d789094.css.map": "/becky-books-dev/static/css/main.3d789094.css.map",
+    "main.49079fd5.js.map": "/becky-books-dev/static/js/main.49079fd5.js.map",
     "787.3bf0dcc2.chunk.js.map": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54943867.css",
-    "static/js/main.2e05ffde.js"
+    "static/css/main.3d789094.css",
+    "static/js/main.49079fd5.js"
   ]
 }
