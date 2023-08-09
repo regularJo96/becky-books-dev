@@ -4,54 +4,49 @@ import "../shared/assets/style.css"
 
 function ShelfBar(props){
   // shelfContext can be set with props.setShelfContext
-  var defaultTab = "btn rounded border-white text-white text-center pointer";
-  var activeTab = "btn rounded border-white btn-clicked text-center pointer";
+  const [toReadTab, setToReadTab] = useState("btn rounded border-white btn-clicked text-center pointer");
+  const [amReadingTab, setAmReadingTab] = useState("btn rounded border-white text-white text-center pointer");
+  const [haveReadTab, setHaveReadTab] = useState("btn rounded border-white text-white text-center pointer");
 
-  const setActive = (e) => {
-    if(e.target.id=="to-read"){
-      props.setShelfContext("to-read")
-    }
-    else if(e.target.id=="am-reading"){
-      props.setShelfContext("am-reading")
-    }
-    else if(e.target.id=="have-read"){
-      props.setShelfContext("have-read")
-    }
+  function setToRead(){
+    props.setShelfContext("to-read");
+    setToReadTab("btn rounded border-white btn-clicked text-center pointer");
+    setAmReadingTab("btn rounded border-white text-white text-center pointer");
+    setHaveReadTab("btn rounded border-white text-white text-center pointer");
   }
 
-  if(props.shelfContext=="to-read"){
-    return(
-      <>
-        <div className="shelf-menu">
-          <div id="to-read" className={activeTab} onClick={setActive}>To Read</div>
-          <div id="am-reading" className={defaultTab} onClick={setActive}>Am Read(ing)</div>
-          <div id="have-read" className={defaultTab} onClick={setActive}>Have Read</div>
-        </div>
-      </>
-    )
-  } 
-  else if(props.shelfContext=="am-reading") {
-    return(
-      <>
-        <div className="shelf-menu">
-          <div id="to-read" className={defaultTab} onClick={setActive}>To Read</div>
-          <div id="am-reading" className={activeTab} onClick={setActive}>Am Read(ing)</div>
-          <div id="have-read" className={defaultTab} onClick={setActive}>Have Read</div>
-        </div>
-      </>
-    )
+  function setAmReading(){
+    props.setShelfContext("am-reading");
+    setToReadTab("btn rounded border-white text-white text-center pointer");
+    setAmReadingTab("btn rounded border-white btn-clicked text-center pointer");
+    setHaveReadTab("btn rounded border-white text-white text-center pointer");
   }
-  else {
-    return(
-      <>
-        <div className="shelf-menu">
-          <div id="to-read" className={defaultTab} onClick={setActive}>To Read</div>
-          <div id="am-reading" className={defaultTab} onClick={setActive}>Am Read(ing)</div>
-          <div id="have-read" className={activeTab} onClick={setActive}>Have Read</div>
-        </div>
-      </>
-    )
+
+  function setHaveRead(){
+    props.setShelfContext("have-read");
+    setToReadTab("btn rounded border-white text-white text-center pointer");
+    setAmReadingTab("btn rounded border-white text-white text-center pointer");
+    setHaveReadTab("btn rounded border-white btn-clicked text-center pointer");
   }
+
+  return(
+    <>
+      <div className="shelf-menu">
+        <div id="to-read" className={toReadTab} onClick={setToRead}>
+          To Read
+          <span class="material-symbols-outlined" onClick={setToRead}>favorite</span>
+        </div>
+        <div id="am-reading" className={amReadingTab} onClick={setAmReading}>
+          Am Read(ing)
+          <span class="material-symbols-outlined" onClick={setAmReading}>menu_book</span>
+        </div>
+        <div id="have-read" className={haveReadTab} onClick={setHaveRead}>
+          Have Read
+          <span class="material-symbols-outlined" onClick={setHaveRead}>check_circle</span>
+        </div>
+      </div>
+    </>
+  )
 
 }
 

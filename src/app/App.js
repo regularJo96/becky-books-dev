@@ -33,6 +33,13 @@ function App() {
   }
   
   const addToShelf = (title, author, description, shelf) => {
+    if(shelf=="favorite"){
+      shelf="to-read";
+    } else if(shelf=="menu_book") {
+      shelf="am-reading";
+    } else if(shelf=="check_circle"){
+      shelf="have-read";
+    }
     fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {

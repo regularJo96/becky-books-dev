@@ -1,30 +1,39 @@
 import React, { useState, useEffect} from "react";
 
-import "./Book.css"
+import "./Book.css";
 
 function Book(props){
 
-  const [adds, setAdds] = useState(["am-reading", "have-read"]);
+  const [adds, setAdds] = useState(["menu_book", "check_circle"]);
+  const [expand, setExpand] = useState("more-info hidden");
+
+  function handleExpand(e){
+    setExpand("more-info");
+  }
+
+  function handleExpandClose(e){
+    setExpand("more-info hidden");
+  }
 
   useEffect(() => {
     if(props.shelfContext=="to-read"){
-      setAdds(["am-reading", "have-read"]);
+      setAdds(["menu_book", "check_circle"]);
     }
     else if(props.shelfContext=="am-reading"){
-      setAdds(["to-read", "have-read"]);
+      setAdds(["favorite", "check_circle"]);
     }
     else if(props.shelfContext=="have-read"){
-      setAdds(["to-read", "am-reading"]);
+      setAdds(["favorite", "menu_book"]);
     }
     
   }, [props.shelfContext]);
-  
+
   let author = "";
   try{
-    author = props.book.author_name[0]
+    author = props.book.author_name[0];
   }
   catch{
-    author = props.book.author
+    author = props.book.author;
   }
 
   let title = props.book.title;
@@ -36,21 +45,31 @@ function Book(props){
     if(cover_id == "No Cover Found"){
       return(
         <>
-          <div className="book-container">
-            <div className="book-item text-bold default-image bg-green-dark border-round title">
-              {title}
-              <div className="add-to-shelf">
-                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'to-read')}}>+ To Read</div>
-                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'am-reading')}}>+ Am Reading</div>
-                <div className="add bg-wine pointer" onClick={() => {props.addToShelf(title, author, description, 'have-read')}}>+ Have Read</div>
+            <div className="book-container center-all">
+              <div className="book-cover bg-green-dark border-round" onMouseEnter={handleExpand} onMouseLeave={handleExpandClose}>
+                <div id="title" className="title center-all">
+                  {title}
+                </div>
               </div>
+              <div className={expand} onMouseEnter={handleExpand} onMouseLeave={handleExpandClose}>
+                <div className="book-info"></div>
+                <div>
+                    <span class="material-symbols-outlined pointer" onClick={() => {props.addToShelf(title, author, description, "favorite")}}>favorite</span>
+                </div>
+                <div>
+                  <span class="material-symbols-outlined pointer" onClick={() => {props.addToShelf(title, author, description, "menu_book")}}>menu_book</span>
+                </div>
+                <div>
+                  <span class="material-symbols-outlined pointer" onClick={() => {props.addToShelf(title, author, description, "check_circle")}}>check_circle</span>
+                </div>
+              </div>
+
+
+              <div className="author center-all">
+                {author}
+              </div>
+  
             </div>
-            
-            <div id="title" className="book-item text-bold overflow-title">{title}</div>
-            {/* <p>{description}</p> */}
-            <div id="author" className="book-item overflow-title">{author}</div>
-            {/* <div className="book-item">ISBN: {isbn}</div> */}
-          </div>
         </>
       );
     } else{
@@ -70,36 +89,39 @@ function Book(props){
   }
   else{
     if(cover_id == "No Cover Found"){
-      return(
-        <>
-          <div className="book-container">
-            <div className="book-item text-bold default-image bg-green-dark border-round cover">
-              <div className="remove pointer" onClick={() => {props.deleteBook(props.book.id)}}>
-                <span class="material-symbols-outlined">
-                  delete
-                </span>
+        return(
+          <>
+  
+            <div className="book-container center-all">
+              <div className="book-cover bg-green-dark border-round" onMouseEnter={handleExpand} onMouseLeave={handleExpandClose}>
+                <div id="title" className="title center-all">
+                  {title}
+                </div>
+              </div>
+              <div className={expand} onMouseEnter={handleExpand} onMouseLeave={handleExpandClose}>
+                <div className="book-info"></div>
+                <div>
+                  <span class="material-symbols-outlined pointer" onClick={() => {props.deleteBook(props.book.id)}}>
+                    delete
+                  </span>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined pointer" onClick={() => {props.addToShelf(title, author, description, adds[0])}}>{adds[0]}</span>
+                </div>
+                <div>
+                  <span class="material-symbols-outlined pointer" onClick={() => {props.addToShelf(title, author, description, adds[1])}}>{adds[1]}</span>
+                </div>
               </div>
 
-              <div className="bookmarks">
-                <div className="one bg-wine border-round pointer" onClick={() => {props.addToShelf(title, author, description, adds[0])}}>+ {adds[0]}</div>
-                <div className="two bg-wine border-round pointer" onClick={() => {props.addToShelf(title, author, description, adds[1])}}>+ {adds[1]}</div>
-              </div>
 
-
-              
-              <div className="padding-10px title">
-                {title}
+              <div className="author center-all">
+                {author}
               </div>
-             
+  
             </div>
-            
-            <div id="title" className="book-item text-bold overflow-title">{title}</div>
-            {/* <p>{description}</p> */}
-            <div id="author" className="book-item overflow-title">{author}</div>
-            {/* <div className="book-item">ISBN: {isbn}</div> */}
-          </div>
-        </>
-      );
+          </>
+        );
+
     } else{
       return(
         <>
