@@ -1,0 +1,56 @@
+.book-container{
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+} 
+
+.book-cover{
+  display: inline-block;
+  position: relative;
+  width: 140px;
+  margin: auto;
+}
+
+.center-all{
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.title{
+  display: grid;
+  /* border: solid;
+  border-color: pink; */
+  margin: auto;
+  height: 209px;
+}
+
+.author{
+  /* border: solid; */
+}
+
+.more-info{
+  border: solid;
+  border-radius: 2px;
+  display: inline-block;
+  position: absolute;
+  height: 205px;
+  border-color: salmon;
+  background-color: rgb(254, 249, 171);
+}
+
+.more-info span{
+  margin-bottom: 30px;
+}
+
+.overflow-title{
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.hidden{
+  display: none;
+}
