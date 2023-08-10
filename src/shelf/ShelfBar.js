@@ -4,29 +4,38 @@ import "../shared/assets/style.css"
 
 function ShelfBar(props){
   // shelfContext can be set with props.setShelfContext
-  const [toReadTab, setToReadTab] = useState("btn rounded border-white btn-clicked text-center pointer");
-  const [amReadingTab, setAmReadingTab] = useState("btn rounded border-white text-white text-center pointer");
-  const [haveReadTab, setHaveReadTab] = useState("btn rounded border-white text-white text-center pointer");
+  const [toReadTab, setToReadTab] = useState("");
+  const [amReadingTab, setAmReadingTab] = useState("");
+  const [haveReadTab, setHaveReadTab] = useState("");
+
+  useEffect(() => {
+    if(props.shelfContext=="to-read"){
+      setToReadTab("btn rounded border-white btn-clicked text-center pointer");
+      setAmReadingTab("btn rounded border-white text-white text-center pointer");
+      setHaveReadTab("btn rounded border-white text-white text-center pointer");
+    }
+    else if(props.shelfContext=="am-reading"){
+      setToReadTab("btn rounded border-white text-white text-center pointer");
+      setAmReadingTab("btn rounded border-white btn-clicked text-center pointer");
+      setHaveReadTab("btn rounded border-white text-white text-center pointer");
+    }
+    else if(props.shelfContext=="have-read"){
+      setToReadTab("btn rounded border-white text-white text-center pointer");
+      setAmReadingTab("btn rounded border-white text-white text-center pointer");
+      setHaveReadTab("btn rounded border-white btn-clicked text-center pointer");
+    }
+  }, [props.shelfContext]);
 
   function setToRead(){
     props.setShelfContext("to-read");
-    setToReadTab("btn rounded border-white btn-clicked text-center pointer");
-    setAmReadingTab("btn rounded border-white text-white text-center pointer");
-    setHaveReadTab("btn rounded border-white text-white text-center pointer");
   }
 
   function setAmReading(){
     props.setShelfContext("am-reading");
-    setToReadTab("btn rounded border-white text-white text-center pointer");
-    setAmReadingTab("btn rounded border-white btn-clicked text-center pointer");
-    setHaveReadTab("btn rounded border-white text-white text-center pointer");
   }
 
   function setHaveRead(){
     props.setShelfContext("have-read");
-    setToReadTab("btn rounded border-white text-white text-center pointer");
-    setAmReadingTab("btn rounded border-white text-white text-center pointer");
-    setHaveReadTab("btn rounded border-white btn-clicked text-center pointer");
   }
 
   return(
