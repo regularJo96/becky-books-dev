@@ -24,22 +24,6 @@
     text-overflow: ellipsis;
 }
 
-.bg-wine{
-    background-color: #722f37;
-}
-
-.bg-latte{
-    background-color: #ccae88;
-}
-
-.bg-dark-blue{
-    background-color: #0c7dd9;
-}
-
-.bg-white{
-    background-color: white;
-}
-
 .text-white{
     color: white;
 }
@@ -54,25 +38,6 @@ img{
 
 .text-white{
     color: white;
-}
-
-.bg-gold-dark{
-    background-color: rgb(180, 153, 0);
-}
-.bg-gold{
-    background-color: rgb(255, 217, 0);
-}
-
-.bg-green-dark{
-    background-color: #1a4f01;
-}
-
-.bg-green-light{
-    background-color: #2f760ee5;
-}
-
-.bg-white{
-    background-color: white;
 }
 
 .text-dark{

@@ -11,17 +11,17 @@ function ShelfBar(props){
   useEffect(() => {
     if(props.shelfContext=="to-read"){
       setToReadTab("btn rounded border-white btn-clicked text-center pointer");
-      setAmReadingTab("btn rounded border-white text-white text-center pointer");
-      setHaveReadTab("btn rounded border-white text-white text-center pointer");
+      setAmReadingTab("btn rounded border-white text-center pointer");
+      setHaveReadTab("btn rounded border-white text-center pointer");
     }
     else if(props.shelfContext=="am-reading"){
-      setToReadTab("btn rounded border-white text-white text-center pointer");
+      setToReadTab("btn rounded border-white text-center pointer");
       setAmReadingTab("btn rounded border-white btn-clicked text-center pointer");
-      setHaveReadTab("btn rounded border-white text-white text-center pointer");
+      setHaveReadTab("btn rounded border-white text-center pointer");
     }
     else if(props.shelfContext=="have-read"){
-      setToReadTab("btn rounded border-white text-white text-center pointer");
-      setAmReadingTab("btn rounded border-white text-white text-center pointer");
+      setToReadTab("btn rounded border-white text-center pointer");
+      setAmReadingTab("btn rounded border-white text-center pointer");
       setHaveReadTab("btn rounded border-white btn-clicked text-center pointer");
     }
   }, [props.shelfContext]);
