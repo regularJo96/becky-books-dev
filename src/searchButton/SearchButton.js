@@ -64,7 +64,7 @@ var activeTab = "text-white active";
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="btn border-latte bg-salmon text-center pointer">Retrieve Books</button>
                 </form>
               </div>
               
@@ -88,7 +88,7 @@ var activeTab = "text-white active";
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="btn border-latte bg-salmon text-center pointer">Retrieve Books</button>
                 </form>
               </div>
               
@@ -117,7 +117,7 @@ var activeTab = "text-white active";
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="btn border-latte bg-salmon text-center pointer">Retrieve Books</button>
                 </form>
               </div>
 
@@ -143,7 +143,7 @@ var activeTab = "text-white active";
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="btn border-latte bg-salmon text-center pointer">Retrieve Books</button>
                 </form>
               </div>
 

@@ -7,6 +7,7 @@ import Shelf from "../shelf/Shelf";
 import Blog from "../blog/Blog";
 
 import "../shared/assets/style.css"
+import "../shared/assets/background_colors.css"
 
 
 
