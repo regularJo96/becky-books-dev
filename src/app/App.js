@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 
-import SearchButton from "../searchButton/SearchButton";
+import AddBookManually from "../addBookManually/AddBookManually";
+import AddBook from "../addBook/AddBook";
 import InfoBar from "../infoBar/InfoBar";
 import ShelfBar from "../shelf/ShelfBar";
 import Shelf from "../shelf/Shelf";
@@ -75,7 +76,7 @@ function App() {
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
-          <SearchButton addToShelf={addToShelf} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          <AddBook addToShelf={addToShelf} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
           <Shelf books={books} addToShelf={addToShelf} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>

@@ -1,0 +1,113 @@
+<style>
+
+    body{
+        background-image: url("images/books.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    @font-face {
+        font-family: "BookAntiqua";
+        src: url("./fonts/book-antiqua.ttf") format("ttf");
+        /* Add other font formats if needed */
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 150px 75%;
+    }
+
+    .navbar{
+        background-color: rgba(255, 255, 255, 0.447);
+        grid-column-start: 1;
+        grid-column-end: 7;
+        display: grid;
+
+        grid-template-columns: 200px 120px 120px 120px 120px auto;
+    }
+
+    .nav-item-name{
+        grid-column-start: 1;
+        grid-column-end: 2;
+        /* background-color: rgb(239, 99, 123); */
+    }
+    
+    .nav-item{
+        font-size: 16pt;
+        font-family: "BookAntiqua", serif;
+    }
+
+    .item-1{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    .item-2{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    .item-3{
+        grid-column-start: 4;
+        grid-column-end: 5;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    .item-4{
+        grid-column-start: 5;
+        grid-column-end: 6;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    .nav-item:hover{
+        margin-top: 20px;
+    }
+
+    .align-bottom{
+        align-self: center;
+    }
+
+    .visual{
+        background-color: black;
+    }
+
+    .justify-center{
+        justify-self: center;
+    }
+</style>
+
+<body class="container">
+
+    <div class="navbar">
+        <div class="nav-item-name">
+            <img src="./images/becky-books-logo.png" width="200px">
+        </div>
+    
+        <div class="nav-item item-1 align-bottom">
+            writing
+        </div>
+    
+        <div class="nav-item item-2 align-bottom">
+            reading
+        </div>
+    
+        <div class="nav-item item-3 align-bottom">
+            academia
+        </div>
+    
+        <div class="nav-item item-4 align-bottom">
+            life
+        </div>
+    </div>
+
+    <!-- <div class="visual justify-center">
+        <img src="./images/becky-home.png" width="600px">
+    </div> -->
+
+</body>
+

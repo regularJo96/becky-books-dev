@@ -31,20 +31,6 @@
   /* border: solid; */
 }
 
-.more-info{
-  border: solid;
-  border-radius: 2px;
-  display: inline-block;
-  position: absolute;
-  height: 205px;
-  border-color: salmon;
-  background-color: rgb(254, 249, 171);
-}
-
-.more-info span{
-  margin-bottom: 30px;
-}
-
 .overflow-title{
   white-space: nowrap;
   overflow-x: hidden;

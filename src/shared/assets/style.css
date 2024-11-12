@@ -1,7 +1,22 @@
+div{
+    user-select: none;
+}
+
 .text-center{
     text-align: center;
 }
 
+.w-30-px{
+    width: 30px;
+}
+
+.w-25{
+    width: 25%;
+}
+
+.w-50{
+    width: 50%;
+}
 
 .invisible{
     visibility: hidden;
@@ -24,6 +39,10 @@
     text-overflow: ellipsis;
 }
 
+.center{
+    margin: auto;
+}
+
 .bg-wine{
     background-color: #722f37;
 }
@@ -32,8 +51,8 @@
     background-color: #ccae88;
 }
 
-.bg-dark-blue{
-    background-color: #0c7dd9;
+.bg-blue{
+    background-color: #0061c2cc;
 }
 
 .bg-white{
@@ -52,8 +71,8 @@ img{
     cursor: pointer;
 }
 
-.text-white{
-    color: white;
+.text-black{
+    color: black;
 }
 
 .bg-gold-dark{
@@ -126,7 +145,7 @@ img{
 }
 
 .shelf{
-    display: block;
+    display: grid;
 } 
 
 
@@ -179,7 +198,7 @@ img{
     
     .shelf-menu{
         display: grid;
-        margin: 15px;
+        margin: auto;
         grid-template-rows: auto auto auto;
         row-gap: 10px;
     }
@@ -201,7 +220,7 @@ img{
     }
     .shelf-menu{
         display: grid;
-        margin: 15px;
+        margin: auto;
         grid-template-rows: auto auto auto;
         row-gap: 10px;
     }
@@ -214,7 +233,7 @@ img{
 
     .shelf-menu{
         display: grid;
-        margin: 15px;
+        margin: auto;
         grid-template-rows: auto auto auto;
         row-gap: 10px;
     }
@@ -227,7 +246,7 @@ img{
 
     .shelf-menu{
         display: grid;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-columns: auto auto auto;
         column-gap: 5px;
         text-align: center;
         margin: auto;
@@ -242,7 +261,7 @@ img{
 
     .shelf-menu{
         display: grid;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-columns: auto auto auto;
         column-gap: 5px;
         text-align: center;
         margin: auto;
@@ -257,7 +276,7 @@ img{
 
     .shelf-menu{
         display: grid;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-columns: auto auto auto;
         column-gap: 5px;
         text-align: center;
         margin: auto;
@@ -272,7 +291,7 @@ img{
 
     .shelf-menu{
         display: grid;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-columns: auto auto auto;
         column-gap: 5px;
         text-align: center;
         margin: auto;
@@ -282,11 +301,16 @@ img{
 
 /* BUTTONS START */
 
-.btn{
+.button{
     display: flex;
-    height: 100%;
+    height: 30px;
     justify-content: center;
     align-items: center;
+}
+
+.button:hover{
+    background-color: #6974a2a7;
+    /* background-color: #722f37; */
 }
 
 .btn-round-1{
@@ -305,13 +329,9 @@ img{
     background-color: white;
 }
 
-.btn:hover{
-    background-color: white;
-    color: black;
-}
-
 .btn-clicked{
     background-color: white;
+    color: black;
 }
 
 .btn-sm-clicked{

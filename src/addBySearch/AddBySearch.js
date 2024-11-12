@@ -2,39 +2,27 @@ import React, { useState, useEffect} from "react";
 
 import Book from "../book/Book.js"
 
-import "./SearchButton.css"
+import "./AddBySearch.css"
 import "../shared/assets/style.css"
 
-function SearchButton(props){
+function AddBySearch(props){
+
   
+// I think I can try the "hidden" approach like I have with the buttons. Just hide the views when search is active.
+
+
 var defaultTab = "text-white default";
 var activeTab = "text-white active";
 
-  const [active, setActive] = useState(false)
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
-  const [searchStr, setSearchStr] = useState()
-
-  useEffect(() => {
-    changeLocation();
-  }, [active]);
-
-
-  function changeLocation(){
-    if(active){
-      props.setLocation("search")
-    }
-    else{
-      props.setLocation("shelf")
-    }
-  }
+  const [searchStr, setSearchStr] = useState();
 
   const findBooks = (event) => {
-    
     event.preventDefault();
     setLoading(true);
 
-    fetch(`https://openlibrary.org/search.json?q=${searchStr}&limit=20`)
+    fetch(`https://openlibrary.org/search.json?q=${searchStr}&limit=10`)
       .then(response => {
         return response.json();
       })
@@ -43,29 +31,24 @@ var activeTab = "text-white active";
         setBooks(data);
         setLoading(false);
       });
-
-      
-
   }
-
-  if(active){
+  
     if(books.length==0){
       if(loading){
         return(
           <>
+            
             <div id="search" className={activeTab}>
               <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
-                close
-              </span>
             </div>
   
-            <div className="search-container">
+            <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Retrieve Books</button>
                 </form>
+              
               </div>
               
               <div>
@@ -77,22 +60,22 @@ var activeTab = "text-white active";
       } else{
         return(
           <>
+           
             <div id="search" className={activeTab}>
+            
               <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
-                close
-              </span>
             </div>
   
-            <div className="search-container">
+            <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Retrieve Books</button>
                 </form>
+             
               </div>
               
-              <div>
+              <div className="no-books bg-antiquewhite position-absolute">
                 No Books
               </div>
             </div>
@@ -106,19 +89,19 @@ var activeTab = "text-white active";
       if(loading){
         return (
 <>
+          
             <div id="search" className={activeTab}>
+            
               <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
-                close
-              </span>
             </div>
 
-            <div className="search-container">
+            <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
+
               </div>
 
               <div>
@@ -132,47 +115,40 @@ var activeTab = "text-white active";
 
         return (
           <>
+         
             <div id="search" className={activeTab}>
+           
               <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-              <span className="material-symbols-outlined pointer" onClick={(() => setActive(false))}>
-                close
-              </span>
+
             </div>
 
-            <div className="search-container">
+            <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className="btn border-latte bg-wine text-center pointer">Retrieve Books</button>
+                  <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
+                
               </div>
 
-              <div className="shelf">
+              <div className="search-results bg-antiquewhite">
+                <div className="row bg-antiquewhite ">
                 {
                   (books.docs).map(function(book){
-                    return <Book book={book} addToShelf={props.addToShelf} location={props.location}/>
+
+                    return (
+                    <div className="col-4 my-5">
+                      <Book book={book} addToShelf={props.addToShelf} location={props.location}/>
+                    </div>
+                    )
                   })
                 }
+                </div>
               </div>
             </div>
           </>
         );
       }
-    }
-  } 
-  else {
-    return (
-      <>
-        <div id="search" className={defaultTab}>
-          <span className="search-prompt">add book</span>
-          <span className="material-symbols-outlined pointer" onClick={(() => setActive(true))}>
-            search
-          </span>
-        </div>
-      </>
-    );
-  }
-
+    } 
 }
-
-export default SearchButton;
+export default AddBySearch;
