@@ -22,15 +22,22 @@ var activeTab = "text-white active";
     event.preventDefault();
     setLoading(true);
 
-    fetch(`https://openlibrary.org/search.json?q=${searchStr}&limit=10`)
+    fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
+      method: "GET",
+      headers : {
+        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
+      }
+    })
       .then(response => {
         return response.json();
       })
       .then(data => {
-        
         setBooks(data);
         setLoading(false);
       });
+
+
+      console.log(books)
   }
   
     if(books.length==0){

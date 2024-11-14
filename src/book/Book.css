@@ -19,12 +19,19 @@
   align-content: center;
 }
 
-.title{
+.title-no-cover{
   display: grid;
   /* border: solid;
   border-color: pink; */
   margin: auto;
   height: 209px;
+}
+
+.title{
+  display: grid;
+  /* border: solid;
+  border-color: pink; */
+  margin: auto;
 }
 
 .author{

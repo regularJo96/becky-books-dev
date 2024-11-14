@@ -11,6 +11,7 @@ function Shelf(props){
 
   useEffect(() => {
     handleBookShelfState();
+    console.log(props.books)
   }, [props.location]);
 
   function handleBookShelfState(){
