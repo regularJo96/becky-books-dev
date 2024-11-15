@@ -8,6 +8,7 @@ import coverPlaceholder from "../app/images/the-book-thief.jpg"
 
 function Book(props){
 
+  const [id, setID] = useState(props.book.id);
   const [cover, setCover] = useState("No Cover Found");
   const [loading, setLoading] = useState(true);
   const [adds, setAdds] = useState(["menu_book", "check_circle", "delete"]);
@@ -35,7 +36,6 @@ function Book(props){
     if(props.shelfContext=="to-read"){
       setTipTitle(["'Am Reading'", "'Have Read'", "Delete"]);
       setAdds(["menu_book", "check_circle", "delete"]);
-      console.log(props.book);
     }
     else if(props.shelfContext=="am-reading"){
       setTipTitle(["'To Read'", "'Have Read'", "Delete"]);
@@ -49,40 +49,16 @@ function Book(props){
 
   useEffect(() => {
 
-    // try{
-    //   setLoading(true);
-
-    //   fetch(`https://openlibrary.org/search.json?q=${props.book.title}&fields=title,cover_edition_key&limit=1`, {
-    //     headers : {
-    //       "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
-    //     }
-    //   })
-    //     .then(response => {
-    //       return response.json();
-    //     })
-    //     .then(data => {
-    //       setCover(data.docs[0].cover_edition_key);
-    //       console.log(data)
-    //       console.log(data.docs[0].cover_edition_key)
-    //       setLoading(false);
-          
-    //     });
-    //   // setCover(props.book.cover_edition_key);
-    // }
-    // catch{
-    //   setCover("No Cover Found");
-    //   setLoading(false);
-    // }
-
-    //after testing complete, uncomment above and 
-    //delete the following after testing is done!!!
-    // setCover("No Cover Found");
-      setCover(coverPlaceholder)
+      setCover(props.cover)
       setLoading(false);
 
   }, [])
 
   useEffect(updateToolTipAndAdds, [props.shelfContext]);
+
+  useEffect(() => {
+    // getCover(props.book.id)
+  }, [props.shelfContext]);
 
   useEffect(() => {
     if(props.location=="search"){
@@ -166,7 +142,7 @@ function Book(props){
             <div className="book-cover bg-white border-round" onMouseEnter={handleExpand} onMouseLeave={handleExpandClose}>
             {/* <div className="tooltip">{title}</div> */}
               {/* <img className="book-item pointer" src={`https://covers.openlibrary.org/b/olid/${cover}-M.jpg`} alt={`${title}`} height="209px;" width="140px;"></img> */}
-              <img className="book-item pointer" src={coverPlaceholder} alt={`${title}`} height="209px;" width="140px;"></img>
+              <img className="book-item pointer" src={props.cover} alt={`${title}`} height="209px;" width="140px;"></img>
               <div className={expand}>
                   {/* <div className="book-info"></div> */}
                   <div className="row align-items-center">

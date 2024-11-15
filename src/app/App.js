@@ -34,6 +34,8 @@ function App() {
   }
   
   const addToShelf = (title, author, description, shelf) => {
+    let id = ""
+    let cover = ""
     if(shelf=="favorite"){
       shelf="to-read";
     } else if(shelf=="menu_book") {
@@ -41,6 +43,8 @@ function App() {
     } else if(shelf=="check_circle"){
       shelf="have-read";
     }
+
+
     fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {
@@ -49,25 +53,78 @@ function App() {
       body: JSON.stringify({title, author, description, shelf}),
     })
       .then(response => {
-        return response.text();
+        return response.json();
       })
       .then(data => {
+        // console.log(data);
+        id=data["id"]
+        console.log(id)
+
         alert(`${title} added to ${shelf}`);
-        getBooks();
+
       });
+
+    // fetch to add image to book just created
+    fetch(`https://openlibrary.org/search.json?q=${title}&fields=title,cover_edition_key&limit=1`, {
+      headers : {
+        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+              let cover_id=data.docs[0].cover_edition_key
+              // 
+              fetch(`https://covers.openlibrary.org/b/olid/${cover_id}-M.jpg`, {
+                    method: 'GET',
+                      headers: {
+                        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
+                      }
+                })
+                  .then(response => {
+                      return response.blob();
+                  })
+                  .then(data => {
+                  
+                      fetch(`${API_URL}/update-image/${id}`, {
+                        method: 'POST',
+                        headers: {
+                          "Content-Type": "application/octet-stream"
+                        },
+                        body: data
+                      })
+                      .then(response => {
+                          return response.text();
+                      })
+                      .then(data => {
+                        console.log(data);
+                        // alert("added image");
+
+                        getBooks();
+                      });
+                  });
+
+                });
+                
   }
 
   function deleteBook(id) {
-    fetch(`${API_URL}/books/${id}`, {
-      method: 'DELETE',
-    })
-      .then(response => {
-        return response.text();
+    
+    let result = window.confirm("Delete Book?");
+      
+    if(result){
+      fetch(`${API_URL}/books/${id}`, {
+        method: 'DELETE',
       })
-      .then(data => {
-        alert("book removed from shelf");
-        getBooks();
-      });
+        .then(response => {
+            return response.text();
+        })
+        .then(data => {
+          alert("book removed from shelf");
+          getBooks();
+        });
+    }
   }
   
   if(infoBarContext=="bookshelf"){
@@ -76,8 +133,8 @@ function App() {
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
-          <AddBook addToShelf={addToShelf} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
-          <Shelf books={books} addToShelf={addToShelf} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
+          <AddBook addToShelf={addToShelf} apiUrl={API_URL} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          <Shelf books={books} addToShelf={addToShelf} apiUrl={API_URL} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );

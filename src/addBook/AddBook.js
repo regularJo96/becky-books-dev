@@ -57,7 +57,7 @@ function AddBook(props){
                         </span>
                     </div>
     
-                    <AddBySearch addToShelf={props.addToShelf} location={props.location} shelfContext={props.shelfContext} />
+                    <AddBySearch addToShelf={props.addToShelf} apiUrl={props.apiUrl} location={props.location} shelfContext={props.shelfContext} />
                 </>
             );
 
@@ -70,7 +70,7 @@ function AddBook(props){
                         </span>
                     </div>
     
-                    <AddBookManually addToShelf={props.addToShelf} location={props.location} shelfContext={props.shelfContext} />
+                    <AddBookManually addToShelf={props.addToShelf} apiUrl={props.apiUrl} location={props.location} shelfContext={props.shelfContext} />
                 </>
             );
         } else {

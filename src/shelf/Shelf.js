@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 
 import Book from "../book/Book"
+import coverPlaceholder from "../app/images/the-book-thief.jpg"
 
 import "../shared/assets/style.css"
 
@@ -11,7 +12,6 @@ function Shelf(props){
 
   useEffect(() => {
     handleBookShelfState();
-    console.log(props.books)
   }, [props.location]);
 
   function handleBookShelfState(){
@@ -38,9 +38,32 @@ function Shelf(props){
           <div className={`row`}>
           {
             (props.books).map(function(book){
+              
+              let image=null;
+              if(book.cover){
+
+                const arrayBuffer = new Uint8Array(book.cover.data).buffer;
+
+                // Access the underlying ArrayBuffer
+                // const arrayBuffer = Uint16Array.buffer;
+
+                // console.log(arrayBuffer)
+                const blob = new Blob([arrayBuffer], {"type":"image/jpeg"})
+
+                image = URL.createObjectURL(blob)
+
+                // console.log(coverHolder[0])
+                
+                // book.cover=blob
+                // console.log(book.cover)
+              } else{
+                image = coverPlaceholder;
+              }
+              
               return (
                 <div className="col-4 my-5">
-                  <Book book={book} addToShelf={props.addToShelf} deleteBook={props.deleteBook} shelfContext={props.shelfContext} location={props.location}/>
+
+                  <Book key={book.id} book={book} cover={image} addToShelf={props.addToShelf} apiUrl={props.apiUrl} deleteBook={props.deleteBook} shelfContext={props.shelfContext} location={props.location}/>
                 </div>
               )
             

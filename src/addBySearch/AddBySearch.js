@@ -2,6 +2,8 @@ import React, { useState, useEffect} from "react";
 
 import Book from "../book/Book.js"
 
+import coverPlaceholder from "../app/images/the-book-thief.jpg"
+
 import "./AddBySearch.css"
 import "../shared/assets/style.css"
 
@@ -142,10 +144,23 @@ var activeTab = "text-white active";
                 <div className="row bg-antiquewhite ">
                 {
                   (books.docs).map(function(book){
-
+                    let cover = coverPlaceholder;
+                    if(book.hasOwnProperty("cover_edition_key")){
+                      console.log("YES")
+                      cover = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`;
+                    }
+                    else if(book.cover_i){
+                      cover = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+                    }
+                    else if(book.isbn[0]){
+                      cover = `https://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg`;
+                    }
+                    else{
+                      cover = coverPlaceholder;
+                    }
                     return (
                     <div className="col-4 my-5">
-                      <Book book={book} addToShelf={props.addToShelf} location={props.location}/>
+                      <Book book={book} cover={cover} addToShelf={props.addToShelf} location={props.location}/>
                     </div>
                     )
                   })
