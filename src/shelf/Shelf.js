@@ -4,6 +4,7 @@ import Book from "../book/Book"
 import coverPlaceholder from "../app/images/the-book-thief.jpg"
 
 import "../shared/assets/style.css"
+import "./Shelf.css"
 
 function Shelf(props){
 
@@ -34,8 +35,8 @@ function Shelf(props){
   } else {
     return(
       <>  
-        <div className={`container w-75 bg-latte ${shelfHide}`}>
-          <div className={`row`}>
+        <div className={`book-container w-75 bg-latte ${shelfHide}`}>
+      
           {
             (props.books).map(function(book){
               
@@ -61,7 +62,7 @@ function Shelf(props){
               }
               
               return (
-                <div className="col-4 my-5">
+                <div className="book-item">
 
                   <Book key={book.id} book={book} cover={image} addToShelf={props.addToShelf} apiUrl={props.apiUrl} deleteBook={props.deleteBook} shelfContext={props.shelfContext} location={props.location}/>
                 </div>
@@ -69,7 +70,7 @@ function Shelf(props){
             
             })
           }
-          </div>
+          
         </div>
       </>
     );
