@@ -10,6 +10,15 @@
   padding-right: 200px;
 }
 
+.search{
+  width: 300px;
+  height: 30px;
+  font-size: 14pt;
+  color:white;
+  text-align: center;
+  margin: auto;
+}
+
 .bg-antiquewhite{
   background-color: antiquewhite;
 }
@@ -42,7 +51,7 @@ input[type="text"] {
   width: 100%;
 }
 
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 700px) {
 
   .default{
     display: block;
@@ -52,5 +61,23 @@ input[type="text"] {
   .active{
     display: block;
     margin: auto;
+  }
+
+  .search-bar{
+    display: grid;
+    grid-template-columns: 70% 26%;
+    grid-template-rows: 50px;
+  }
+
+  button[type="submit"] {
+    font-size: 14pt;
+    height: 100%;
+    width: 100%;
+  }
+
+  input[type="text"] {
+    font-size: 14pt;
+    height: 100%;
+    width: 100%;
   }
 }

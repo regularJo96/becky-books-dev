@@ -4,8 +4,9 @@ import Book from "../book/Book.js"
 
 import coverPlaceholder from "../app/images/the-book-thief.jpg"
 
-import "./AddBySearch.css"
 import "../shared/assets/style.css"
+import "./AddBySearch.css"
+
 
 function AddBySearch(props){
 
@@ -13,12 +14,9 @@ function AddBySearch(props){
 // I think I can try the "hidden" approach like I have with the buttons. Just hide the views when search is active.
 
 
-var defaultTab = "text-white default";
-var activeTab = "text-white active";
-
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
-  const [searchStr, setSearchStr] = useState();
+  const [searchStr, setSearchStr] = useState("book/author/title etc.");
 
   const findBooks = (event) => {
     event.preventDefault();
@@ -47,8 +45,8 @@ var activeTab = "text-white active";
         return(
           <>
             
-            <div id="search" className={activeTab}>
-              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+            <div className="search">
+              search OpenLibrary
             </div>
   
             <div className="container w-75">
@@ -70,9 +68,8 @@ var activeTab = "text-white active";
         return(
           <>
            
-            <div id="search" className={activeTab}>
-            
-              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+           <div className="search">
+              search OpenLibrary
             </div>
   
             <div className="container w-75">
@@ -99,9 +96,8 @@ var activeTab = "text-white active";
         return (
 <>
           
-            <div id="search" className={activeTab}>
-            
-              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
+            <div className="search">
+              search OpenLibrary
             </div>
 
             <div className="container w-75">
@@ -125,10 +121,8 @@ var activeTab = "text-white active";
         return (
           <>
          
-            <div id="search" className={activeTab}>
-           
-              <span className="search-prompt">search OpenLibrary for a book/author/title etc.</span>
-
+            <div className="search">
+              search OpenLibrary
             </div>
 
             <div className="container w-75">
