@@ -16,7 +16,7 @@ function AddBySearch(props){
 
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
-  const [searchStr, setSearchStr] = useState("book/author/title etc.");
+  const [searchStr, setSearchStr] = useState();
 
   const findBooks = (event) => {
     event.preventDefault();
