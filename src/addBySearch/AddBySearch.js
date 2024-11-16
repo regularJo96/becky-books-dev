@@ -33,7 +33,9 @@ function AddBySearch(props){
       })
       .then(data => {
         setBooks(data);
+        setSearchStr("done")
       });
+      
 
       setLoading(false);
 
