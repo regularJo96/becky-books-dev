@@ -3,12 +3,13 @@ import React, { useState, useEffect} from "react";
 import Book from "../book/Book.js"
 
 import "../shared/assets/style.css"
+import "./AddBookManually.css"
 
 function AddBookManually(props){
 
-  const [bookTitle, setBookTitle] = useState("add title");
-  const [bookAuthor, setBookAuthor] = useState("add author");
-  const [bookDescription, setBookDescription] = useState("add description");
+  const [bookTitle, setBookTitle] = useState();
+  const [bookAuthor, setBookAuthor] = useState();
+  const [bookDescription, setBookDescription] = useState();
   const [bookShelf, setBookShelf] = useState("Shelf")
 //   const [bookCover, setBookCover] = useState()
 
@@ -27,13 +28,14 @@ const addBook = (event) => {
 
     return(
         <>
-            <div className="container w-25">
+            <div className="container">
+                <div className="form-title">Add Book Manually</div>
                 <form className="add-book-custom-form" onSubmit={addBook}>
-                    <input type="text" value={bookTitle} onChange={e => setBookTitle(e.target.value)}/>
-                    <input type="text" value={bookAuthor} onChange={e => setBookAuthor(e.target.value)}/>
-                    <input type="text" value={bookDescription} onChange={e => setBookDescription(e.target.value)}/>
+                    <input type="text" placeholder='Add Title' value={bookTitle} onChange={e => setBookTitle(e.target.value)}/>
+                    <input type="text" placeholder='Add Author' value={bookAuthor} onChange={e => setBookAuthor(e.target.value)}/>
+                    <input type="text" placeholder='Add Description' value={bookDescription} onChange={e => setBookDescription(e.target.value)}/>
                     <label>
-                        <select id="shelfSelect" value={bookShelf} onChange={e => setBookShelf(e.target.value)}>
+                        <select classname="row justify-content-center" id="shelfSelect" value={bookShelf} onChange={e => setBookShelf(e.target.value)}>
                             <option value="">Select Shelf</option>
                             <option value={"favorite"}>To Read</option>
                             <option value={"menu_book"}>Am Reading</option>

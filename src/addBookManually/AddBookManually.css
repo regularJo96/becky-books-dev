@@ -1,6 +1,67 @@
 
 .add-book-custom-form{
-    display: block;
-    padding-left: 200px;
-    padding-right: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    justify-content: space-between;
+    place-items: center;
+    grid-gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
 }
+
+.form-title{
+    height: 30px;
+    font-size: 14pt;
+    color:white;
+    text-align: center;
+    margin: auto;
+}
+
+.container{
+    width: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+    .add-book-custom-form{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100%);
+        grid-auto-rows: 50px;
+        justify-content: space-between;
+        place-items: center;
+        grid-gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    select{
+        font-size: 14pt;
+        height: 50px;
+      }
+
+      .container{
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .add-book-custom-form{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100%);
+        grid-auto-rows: 50px;
+        justify-content: space-between;
+        place-items: center;
+        grid-gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    select{
+        font-size: 14pt;
+        height: 50px;
+      }
+
+      .container{
+        width: 100%;
+    }
+}
+

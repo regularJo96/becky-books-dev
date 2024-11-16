@@ -34,10 +34,6 @@
   margin: auto;
 }
 
-.author{
-  /* border: solid; */
-}
-
 .overflow-title{
   white-space: nowrap;
   overflow-x: hidden;
