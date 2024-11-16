@@ -21,6 +21,7 @@ function AddBySearch(props){
   const findBooks = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setSearchStr("done");
 
     await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
       method: "GET",
@@ -29,7 +30,7 @@ function AddBySearch(props){
       }
     })
       .then(response => {
-        setSearchStr("done");
+        
         return response.json();
       })
       .then(data => {
