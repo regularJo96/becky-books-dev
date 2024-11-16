@@ -32,6 +32,7 @@ function AddBySearch(props){
         return response.json();
       })
       .then(data => {
+        setSearchStr("done");
         setLoading(false);
         setBooks(data);
       });
