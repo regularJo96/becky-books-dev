@@ -40,7 +40,7 @@ function AddBySearch(props){
       });
     } catch (error){
       setLoading(false);
-      setSearchStr("search fail");
+      setSearchStr(error.message);
     }
     
       
