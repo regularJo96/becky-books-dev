@@ -177,6 +177,48 @@ img{
     font-size: x-large;
 }
 
+/* BUTTONS START */
+
+.button{
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover{
+    background-color: #6974a2a7;
+    /* background-color: #722f37; */
+}
+
+.btn-round-1{
+    border-radius: 1px;
+}
+
+.btn-border-color-1{
+    border-color: #1a4f01e5;
+}
+
+.btn-gold-dark{
+    background-color: rgb(180, 153, 0);
+}
+
+.btn-sm:hover{
+    background-color: white;
+}
+
+.btn-clicked{
+    background-color: white;
+    color: black;
+}
+
+.btn-sm-clicked{
+    background-color: #3c831ba1;
+    box-shadow: 0px 0px 5px 1px rgba(60,131,27,0.75);
+}
+
+/* BUTTONS END */
+
 @media only screen and (max-width: 620px) {
 
     .shelf-buttons {
@@ -187,9 +229,14 @@ img{
     }
     .menu {
         display: grid;
-        grid-template-rows: auto 200px 200px;
+        grid-template-rows: auto 300px 300px;
         row-gap: 10px;
     }
+
+    /* .menu-item{
+        font-size: 20pt;
+        height: 100px;
+    } */
 
     /* .shelf{
         display: grid;
@@ -202,15 +249,32 @@ img{
         grid-template-rows: auto auto auto;
         row-gap: 10px;
     }
+
+    .button{
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+    }
     
 }
 
 @media only screen and (max-width: 800px){
     .menu {
-        display: flex;
-        flex-direction: column;
-        row-gap: 10px;
+         display: grid;
+        grid-template-columns: repeat(auto-fill, 100%);
+        grid-auto-rows: 50px;
+        justify-content: space-between;
+        place-items: center;
+        grid-gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 30px;
     }
+    /* .menu-item{
+        font-size: 14pt;
+        height: 50px; 
+    } */
+    
 
     .name{
         display: flex;
@@ -298,45 +362,3 @@ img{
         padding: 15px;
     }
 }
-
-/* BUTTONS START */
-
-.button{
-    display: flex;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.button:hover{
-    background-color: #6974a2a7;
-    /* background-color: #722f37; */
-}
-
-.btn-round-1{
-    border-radius: 1px;
-}
-
-.btn-border-color-1{
-    border-color: #1a4f01e5;
-}
-
-.btn-gold-dark{
-    background-color: rgb(180, 153, 0);
-}
-
-.btn-sm:hover{
-    background-color: white;
-}
-
-.btn-clicked{
-    background-color: white;
-    color: black;
-}
-
-.btn-sm-clicked{
-    background-color: #3c831ba1;
-    box-shadow: 0px 0px 5px 1px rgba(60,131,27,0.75);
-}
-
-/* BUTTONS END */

@@ -5,6 +5,7 @@ import AddBySearch from "../addBySearch/AddBySearch";
 import AddBookManually from "../addBookManually/AddBookManually";
 
 import "../shared/assets/style.css"
+import "./AddBook.css"
 
 function AddBook(props){
 
@@ -81,13 +82,13 @@ function AddBook(props){
                             arrow_back_ios
                         </span>
                     </div>
-                    <div id="search" className="button shelf-item rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleSearchOpen(true))}>
+                    <div id="search" className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleSearchOpen(true))}>
                         <span className="search-prompt pointer" onClick={(() => handleSearchOpen(true))}>Search for a Book</span>
                         <span className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
                             search
                         </span>
                     </div>
-                    <div className="button shelf-item rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleFormOpen(true))}>
+                    <div className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleFormOpen(true))}>
                         Add A book manually
                     </div>
                 </>
@@ -97,7 +98,7 @@ function AddBook(props){
     } else {
         return (
             <>
-                <div className="button shelf-item rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => addOpen(true))}>
+                <div className="button add-book rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => addOpen(true))}>
                     Add A Book
                 </div>
             </>
