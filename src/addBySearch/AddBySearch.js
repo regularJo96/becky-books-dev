@@ -16,7 +16,7 @@ function AddBySearch(props){
 
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
-  const [searchStr, setSearchStr] = useState();
+  const [searchStr, setSearchStr] = useState("hi");
 
   const findBooks = async (event) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ function AddBySearch(props){
       });
     } catch (error){
       setLoading(false);
-      setSearchStr(error.message);
+      setSearchStr(error);
     }
     
       
