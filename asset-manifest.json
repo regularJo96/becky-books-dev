@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/becky-books-dev/static/css/main.031fb815.css",
-    "main.js": "/becky-books-dev/static/js/main.7d3d7d9c.js",
+    "main.js": "/becky-books-dev/static/js/main.0245b3fc.js",
     "static/js/787.3bf0dcc2.chunk.js": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js",
     "static/media/the-book-thief.jpg": "/becky-books-dev/static/media/the-book-thief.ea5e230a8ec8284cba0f.jpg",
     "index.html": "/becky-books-dev/index.html",
     "main.031fb815.css.map": "/becky-books-dev/static/css/main.031fb815.css.map",
-    "main.7d3d7d9c.js.map": "/becky-books-dev/static/js/main.7d3d7d9c.js.map",
+    "main.0245b3fc.js.map": "/becky-books-dev/static/js/main.0245b3fc.js.map",
     "787.3bf0dcc2.chunk.js.map": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.031fb815.css",
-    "static/js/main.7d3d7d9c.js"
+    "static/js/main.0245b3fc.js"
   ]
 }
