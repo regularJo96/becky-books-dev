@@ -18,11 +18,11 @@ function AddBySearch(props){
   const [books, setBooks] = useState([])
   const [searchStr, setSearchStr] = useState();
 
-  const findBooks = (event) => {
+  const findBooks = async (event) => {
     event.preventDefault();
     setLoading(true);
 
-    fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
+    await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
       method: "GET",
       headers : {
         "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
