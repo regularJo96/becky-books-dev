@@ -29,10 +29,10 @@ function AddBySearch(props){
       }
     })
       .then(response => {
+        setSearchStr("done");
         return response.json();
       })
       .then(data => {
-        setSearchStr("done");
         setLoading(false);
         setBooks(data);
       });
