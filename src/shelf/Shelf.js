@@ -64,7 +64,7 @@ function Shelf(props){
               return (
                 <div className="book-item">
 
-                  <Book key={book.id} book={book} cover={image} addToShelf={props.addToShelf} apiUrl={props.apiUrl} deleteBook={props.deleteBook} shelfContext={props.shelfContext} location={props.location}/>
+                  <Book key={book.id} book={book} cover={image} moveToShelf={props.moveToShelf} addToShelf={props.addToShelf} apiUrl={props.apiUrl} deleteBook={props.deleteBook} shelfContext={props.shelfContext} location={props.location}/>
                 </div>
               )
             

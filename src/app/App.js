@@ -105,8 +105,32 @@ function App() {
                       });
                   });
 
-                });
-                
+                });             
+  }
+
+  const moveToShelf = (id, shelf) => {
+    if(shelf=="favorite"){
+      shelf="to-read";
+    } else if(shelf=="menu_book") {
+      shelf="am-reading";
+    } else if(shelf=="check_circle"){
+      shelf="have-read";
+    }
+
+    fetch(`${API_URL}/move-book`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id, shelf}),
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data =>{
+      alert(`${data[0]["title"]} moved to ${data[0]["shelf"]}`)
+      getBooks();
+    })
   }
 
   function deleteBook(id) {
@@ -134,7 +158,7 @@ function App() {
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
           <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
           <AddBook addToShelf={addToShelf} apiUrl={API_URL} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
-          <Shelf books={books} addToShelf={addToShelf} apiUrl={API_URL} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
+          <Shelf books={books} moveToShelf={moveToShelf} addToShelf={addToShelf} apiUrl={API_URL} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
         </div>
       </>
     );

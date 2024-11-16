@@ -9,6 +9,7 @@ import coverPlaceholder from "../app/images/the-book-thief.jpg"
 function Book(props){
 
   const [id, setID] = useState(props.book.id);
+  const [prompt, setPrompt] = useState("Move to");
   const [cover, setCover] = useState("No Cover Found");
   const [loading, setLoading] = useState(true);
   const [adds, setAdds] = useState(["menu_book", "check_circle", "delete"]);
@@ -27,8 +28,12 @@ function Book(props){
     if(shelf=="delete"){
       props.deleteBook(props.book.id);
     }
-    else{
+    else if(props.location=="search"){
       props.addToShelf(title, author, description, shelf);
+    }
+    else{
+      // need to add a moveBook function and respective API request to do so on server
+      props.moveToShelf(props.book.id, shelf);
     }
   }
 
@@ -62,11 +67,13 @@ function Book(props){
 
   useEffect(() => {
     if(props.location=="search"){
-      setTipTitle(["'To Read'", "'Am Reading'", "Have Read"]);
+      setTipTitle(["'To Read'", "'Am Reading'", " Add To 'Have Read'"]);
       setAdds(["favorite", "menu_book", "check_circle"]);
+      setPrompt("Add To");
     }
     else{
       updateToolTipAndAdds()
+      setPrompt("Move To");
     }
 
   }, [props.location]);
@@ -108,10 +115,10 @@ function Book(props){
                 {/* <div className="book-info"></div> */}
                 <div className="row align-items-center">
                   <div className="col-4">
-                      <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`Add To ${tipTitle[0]}`} onClick={() => {handleBookAction(title, author, description, `${adds[0]}`)}}>{adds[0]}</span>
+                      <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${prompt} ${tipTitle[0]}`} onClick={() => {handleBookAction(title, author, description, `${adds[0]}`)}}>{adds[0]}</span>
                   </div>
                   <div className="col-4">
-                    <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`Add To ${tipTitle[1]}`} onClick={() => {handleBookAction(title, author, description, `${adds[1]}`)}}>{adds[1]}</span>
+                    <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${prompt} ${tipTitle[1]}`} onClick={() => {handleBookAction(title, author, description, `${adds[1]}`)}}>{adds[1]}</span>
                   </div>
                   <div className="col-4">
                     <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${tipTitle[2]}`} onClick={() => {handleBookAction(title, author, description, `${adds[2]}`)}}>{adds[2]}</span>
@@ -147,10 +154,10 @@ function Book(props){
                   {/* <div className="book-info"></div> */}
                   <div className="row align-items-center">
                     <div className="col-4">
-                        <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`Add To ${tipTitle[0]}`} onClick={() => {handleBookAction(title, author, description, `${adds[0]}`)}}>{adds[0]}</span>
+                        <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${prompt} ${tipTitle[0]}`} onClick={() => {handleBookAction(title, author, description, `${adds[0]}`)}}>{adds[0]}</span>
                     </div>
                     <div className="col-4">
-                      <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`Add To ${tipTitle[1]}`} onClick={() => {handleBookAction(title, author, description, `${adds[1]}`)}}>{adds[1]}</span>
+                      <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${prompt} ${tipTitle[1]}`} onClick={() => {handleBookAction(title, author, description, `${adds[1]}`)}}>{adds[1]}</span>
                     </div>
                     <div className="col-4">
                       <span class="material-symbols-outlined pointer" data-toggle="tooltip" data-placement="bottom" title={`${tipTitle[2]}`} onClick={() => {handleBookAction(title, author, description, `${adds[2]}`)}}>{adds[2]}</span>
