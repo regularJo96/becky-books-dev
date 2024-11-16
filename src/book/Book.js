@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 
 import "./Book.css";
-import "../addBySearch/AddBySearch.css"
+// import "../addBySearch/AddBySearch.css"
 import "../shared/assets/style.css"
 
 import coverPlaceholder from "../app/images/the-book-thief.jpg"
@@ -17,7 +17,7 @@ function Book(props){
   const [expand, setExpand] = useState("more-info hidden");
 
   function handleExpand(e){
-    setExpand("container position-absolute bottom-0 start-0 bg-wine text-white");
+    setExpand("tool-tips position-absolute bottom-0 start-0 bg-wine text-white");
   }
 
   function handleExpandClose(e){
