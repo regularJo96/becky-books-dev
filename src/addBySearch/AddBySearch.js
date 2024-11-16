@@ -32,11 +32,10 @@ function AddBySearch(props){
         return response.json();
       })
       .then(data => {
+        setLoading(false);
         setBooks(data);
       });
       
-
-      setLoading(false);
   }
   
     if(books.length==0){
