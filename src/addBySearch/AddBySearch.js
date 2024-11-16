@@ -81,7 +81,7 @@ function AddBySearch(props){
   
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
+                <form className="search-bar" onSubmit={test}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Retrieve Books</button>
                 </form>
@@ -109,7 +109,7 @@ function AddBySearch(props){
 
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
+                <form className="search-bar" onSubmit={test}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
@@ -134,7 +134,7 @@ function AddBySearch(props){
 
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
+                <form className="search-bar" onSubmit={test}>
                   <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
