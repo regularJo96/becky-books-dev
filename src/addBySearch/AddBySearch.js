@@ -23,7 +23,7 @@ function AddBySearch(props){
     event.preventDefault();
     setLoading(true);
 
-    axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
+    await axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
       headers: {
         "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
       }
