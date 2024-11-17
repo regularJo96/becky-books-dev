@@ -11,10 +11,6 @@ import "./AddBySearch.css"
 
 function AddBySearch(props){
 
-  
-// I think I can try the "hidden" approach like I have with the buttons. Just hide the views when search is active.
-
-
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
   const [searchStr, setSearchStr] = useState("hi");
@@ -22,44 +18,19 @@ function AddBySearch(props){
   const findBooks = async (event) => {
     event.preventDefault();
     setLoading(true);
-
-    axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
-      headers: {
-        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
-      }
+    
+    await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`)
+    .then(response => { 
+      return response.json();
     })
-    .then((response) => {
-      setSearchStr(response.status)
+    .then(data => {
       setLoading(false);
-      setBooks(response.data);
+      setBooks(data);
+    })
+    .catch (error => {
+      setLoading(false);
+      console.log(error.message)
     });
-    
-
-    // try{
-    //   await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
-    //   method: "GET",
-    //   headers : {
-    //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
-    //   }
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok ' + response.statusText);
-    //       setSearchStr(response);
-    //     }
-        
-    //     return response.json();
-    //   })
-    //   .then(data => {
-    //     setLoading(false);
-    //     setBooks(data);
-    //   });
-    // } catch (error){
-    //   setLoading(false);
-    //   // setSearchStr(error);
-    // }
-    
-      
   }
   
     if(books.length==0){
