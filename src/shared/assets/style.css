@@ -196,9 +196,11 @@ img{
     align-items: center;
 }
 
-.button:hover{
+@media (hover: hover) {
+    button:hover{
     background-color: #6974a2a7;
     /* background-color: #722f37; */
+    }
 }
 
 .btn-round-1{
