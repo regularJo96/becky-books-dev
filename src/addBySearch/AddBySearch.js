@@ -127,7 +127,6 @@ function AddBySearch(props){
               </div>
 
               <div className="search-results bg-antiquewhite">
-                <div className="row bg-antiquewhite ">
                 {
                   (books.docs).map(function(book){
                     let cover = coverPlaceholder;
@@ -145,13 +144,12 @@ function AddBySearch(props){
                       cover = coverPlaceholder;
                     }
                     return (
-                    <div className="col-4 my-5">
+                    <div className="book-item">
                       <Book book={book} cover={cover} addToShelf={props.addToShelf} location={props.location}/>
                     </div>
                     )
                   })
                 }
-                </div>
               </div>
             </div>
           </>
