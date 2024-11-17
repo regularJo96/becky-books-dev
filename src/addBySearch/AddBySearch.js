@@ -29,7 +29,7 @@ function AddBySearch(props){
       }
     })
     .then((response) => {
-    
+      setSearchStr(response.status)
       setLoading(false);
       setBooks(response.data);
     });
