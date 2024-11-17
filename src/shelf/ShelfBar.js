@@ -36,7 +36,7 @@ var activeStyle = "button shelf-item rounded border-white text-white bg-wine tex
   return(
     <>
       <div className="shelf-menu">
-        <div id="to-read" className={`${toReadTab}`} onClick={setToRead}>
+        <div id="to-read" className={`${toReadTab}`} onTouchStart={setToRead} onClick={setToRead}>
           <span class="material-symbols-outlined" onClick={setToRead}>favorite</span>
           To Read
           <span class="material-symbols-outlined" onClick={setToRead}>favorite</span>
