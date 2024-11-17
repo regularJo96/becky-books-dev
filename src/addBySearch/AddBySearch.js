@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect} from "react";
 
 import Book from "../book/Book.js"
@@ -21,31 +22,42 @@ function AddBySearch(props){
   const findBooks = async (event) => {
     event.preventDefault();
     setLoading(true);
-    
 
-    try{
-      await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
-      method: "GET",
-      headers : {
-        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
+    axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
+      headers: {
+        "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
       }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-          setSearchStr(response);
-        }
-        
-        return response.json();
-      })
-      .then(data => {
-        setLoading(false);
-        setBooks(data);
-      });
-    } catch (error){
+    .then((response) => {
+    
       setLoading(false);
-      // setSearchStr(error);
-    }
+      setBooks(response.data);
+    });
+    
+
+    // try{
+    //   await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
+    //   method: "GET",
+    //   headers : {
+    //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
+    //   }
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok ' + response.statusText);
+    //       setSearchStr(response);
+    //     }
+        
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     setLoading(false);
+    //     setBooks(data);
+    //   });
+    // } catch (error){
+    //   setLoading(false);
+    //   // setSearchStr(error);
+    // }
     
       
   }
