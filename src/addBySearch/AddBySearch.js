@@ -33,6 +33,7 @@ function AddBySearch(props){
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok ' + response.statusText);
+          setSearchStr(response);
         }
         
         return response.json();
@@ -43,7 +44,7 @@ function AddBySearch(props){
       });
     } catch (error){
       setLoading(false);
-      setSearchStr(error);
+      // setSearchStr(error);
     }
     
       
