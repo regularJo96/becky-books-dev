@@ -44,15 +44,6 @@ function App() {
       shelf="have-read";
     }
 
-    const headers = new Headers({
-      "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
-    });
-    const options = {
-        method: 'GET',
-        headers: headers
-    };
-
-
     fetch(`${API_URL}/books`, {
       method: 'POST',
       headers: {
@@ -73,16 +64,14 @@ function App() {
       });
 
     // fetch to add image to book just created
-    fetch(`https://openlibrary.org/search.json?q=${title}&fields=title,cover_edition_key&limit=1`,
-    options)
+    fetch(`https://openlibrary.org/search.json?q=${title}&fields=title,cover_edition_key&limit=1`)
       .then(response => {
         return response.json();
       })
       .then(data => {
               let cover_id=data.docs[0].cover_edition_key
               // 
-              fetch(`https://covers.openlibrary.org/b/olid/${cover_id}-M.jpg`,
-              options)
+              fetch(`https://covers.openlibrary.org/b/olid/${cover_id}-M.jpg`)
                   .then(response => {
                       return response.blob();
                   })

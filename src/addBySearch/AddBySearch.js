@@ -18,18 +18,7 @@ function AddBySearch(props){
     event.preventDefault();
     setLoading(true);
     
-    const headers = new Headers({
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
-    });
-    const options = {
-        method: 'GET',
-        headers: headers
-    };
-    
-    await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,
-    options)
+    await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`)
     .then(response => { 
       return response.json();
     })
