@@ -23,67 +23,18 @@ function AddBySearch(props){
     event.preventDefault();
     setLoading(true);
 
-    // await axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
-    //   headers: {
-    //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
-    //   }
-    // })
-    // .then((response) => {
-    //   setSearchStr(response.status)
-    //   setLoading(false);
-    //   setBooks(response.data);
-    // })
-    // .catch(error => {
-    //   console.error('Error fetching data:', error);
-    //   setLoading(false);
-    //   setSearchStr(error)
-    // });
-
-
-    let response = () => {
-      return new Promise(function(resolve, reject) {
-        axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`
-        // ,{
-        //   headers: {
-        //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
-        //   }
-        // }
-        )  
-        .then(response => {
-          resolve(response.data);
-        });
-      });
-    };
-    let responseData = await response();
-    setLoading(false);
-    setBooks(responseData);
-    
-
-    // try{
-    //   await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`, {
-    //   method: "GET",
-    //   headers : {
-    //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
-    //   }
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok ' + response.statusText);
-    //       setSearchStr(response);
-    //     }
-        
-    //     return response.json();
-    //   })
-    //   .then(data => {
-    //     setLoading(false);
-    //     setBooks(data);
-    //   });
-    // } catch (error){
-    //   setLoading(false);
-    //   // setSearchStr(error);
-    // }
-    
-      
+      await fetch(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setLoading(false);
+        setBooks(data);
+      })
+     .catch (error => {
+      setLoading(false);
+      console.log(error.message)
+     });
   }
   
     if(books.length==0){
