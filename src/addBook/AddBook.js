@@ -77,19 +77,24 @@ function AddBook(props){
         } else {
             return (
                 <>  
-                    <div className="button center w-30-px">
+
+                    
+                    <div className="button center arrow">
                         <span className="material-symbols-outlined pointer" onClick={(() => addOpen(false))}>
                             arrow_back_ios
                         </span>
                     </div>
-                    <div id="search" className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleSearchOpen(true))}>
-                        <span className="search-prompt pointer" onClick={(() => handleSearchOpen(true))}>Search for a Book</span>
-                        <span className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
-                            search
-                        </span>
-                    </div>
-                    <div className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => handleFormOpen(true))}>
-                        Add A book manually
+
+                    <div className="add-book-menu">
+                        <div id="search" className="button rounded border-white text-white bg-wine text-center pointer" onClick={(() => handleSearchOpen(true))}>
+                            <span className="search-prompt pointer" onClick={(() => handleSearchOpen(true))}>Search for a Book</span>
+                            <span className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
+                                search
+                            </span>
+                        </div>
+                        <div className="button rounded border-white text-white bg-wine text-center pointer" onClick={(() => handleFormOpen(true))}>
+                            Add A book manually
+                        </div>
                     </div>
                 </>
             );
@@ -98,8 +103,10 @@ function AddBook(props){
     } else {
         return (
             <>
-                <div className="button add-book rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => addOpen(true))}>
-                    Add A Book
+                <div className="add-book">
+                    <div className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => addOpen(true))}>
+                        Add A Book
+                    </div>
                 </div>
             </>
         );

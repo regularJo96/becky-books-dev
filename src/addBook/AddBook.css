@@ -1,4 +1,46 @@
-.add-book{
+/* .add-book{
     margin-top: 20px;
     margin-bottom: 20px;
+} */
+
+.add-book{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    justify-content: space-between;
+    place-items: center;
+    grid-gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.add-book-menu{
+    display: grid;
+    margin: auto;
+    width: 50%;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.arrow{
+    width: 30px;
+}
+
+@media only screen and (max-width: 700px) {
+    .add-book-menu{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        /* place-items: center; */
+    }
+
+    .arrow{
+        margin-top: 30px;
+        width: 50px;
+        font-size: 15pt;
+    }
 }
