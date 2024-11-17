@@ -42,11 +42,13 @@ function AddBySearch(props){
 
     let response = () => {
       return new Promise(function(resolve, reject) {
-        axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`,{
-          headers: {
-            "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
-          }
-        })  
+        axios.get(`https://openlibrary.org/search.json?q=${searchStr}&fields=title,author_alternative_name,author_key,author_name,cover_edition_key,cover_i,first_publish_year,isbn,key&limit=3`
+        // ,{
+        //   headers: {
+        //     "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com",
+        //   }
+        // }
+        )  
         .then(response => {
           resolve(response.data);
         });
