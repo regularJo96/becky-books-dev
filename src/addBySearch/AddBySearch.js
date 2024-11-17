@@ -32,7 +32,12 @@ function AddBySearch(props){
       setSearchStr(response.status)
       setLoading(false);
       setBooks(response.data);
-    });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+      setSearchStr(response.status)
+    });;
     
 
     // try{
