@@ -19,6 +19,8 @@ function AddBySearch(props){
     setLoading(true);
     
     const headers = new Headers({
+      Accept: "application/json",
+      "Content-Type": "application/json",
       "User-Agent": "BeckyBooks/1.0 Josiah.Anderson27@outlook.com"
     });
     const options = {
