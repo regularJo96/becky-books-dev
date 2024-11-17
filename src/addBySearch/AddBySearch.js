@@ -36,7 +36,7 @@ function AddBySearch(props){
     .catch(error => {
       console.error('Error fetching data:', error);
       setLoading(false);
-      setSearchStr(response.status)
+      setSearchStr(error)
     });;
     
 
