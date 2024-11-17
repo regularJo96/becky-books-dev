@@ -12,7 +12,7 @@ function AddBySearch(props){
 
   const [loading, setLoading] = useState(false)
   const [books, setBooks] = useState([])
-  const [searchStr, setSearchStr] = useState("hi");
+  const [searchStr, setSearchStr] = useState();
 
   const findBooks = async (event) => {
     event.preventDefault();
@@ -44,13 +44,13 @@ function AddBySearch(props){
             <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Retrieve Books</button>
                 </form>
               
               </div>
               
-              <div>
+              <div className="no-books bg-antiquewhite position-absolute">
                 finding books...
               </div>
             </div>
@@ -67,7 +67,7 @@ function AddBySearch(props){
             <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Retrieve Books</button>
                 </form>
              
@@ -95,13 +95,13 @@ function AddBySearch(props){
             <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
 
               </div>
 
-              <div>
+              <div className="no-books bg-antiquewhite position-absolute">
                 finding books...
               </div>
             </div>
@@ -120,7 +120,7 @@ function AddBySearch(props){
             <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
                   <button type="submit" className="button border-latte text-white bg-wine text-center pointer">Retrieve Books</button>
                 </form>
                 
