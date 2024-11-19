@@ -50,7 +50,7 @@ function AddBySearch(props){
               
               </div>
               
-              <div className="no-books bg-antiquewhite position-absolute">
+              <div className="no-books bg-latte position-absolute">
                 finding books...
               </div>
             </div>
@@ -73,7 +73,7 @@ function AddBySearch(props){
              
               </div>
               
-              <div className="no-books bg-antiquewhite position-absolute">
+              <div className="no-books bg-latte position-absolute">
                 No Books
               </div>
             </div>
@@ -101,7 +101,7 @@ function AddBySearch(props){
 
               </div>
 
-              <div className="no-books bg-antiquewhite position-absolute">
+              <div className="no-books bg-latte position-absolute">
                 finding books...
               </div>
             </div>

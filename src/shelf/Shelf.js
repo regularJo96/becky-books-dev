@@ -27,7 +27,7 @@ function Shelf(props){
   if(props.books.length == 0){
     return(
       <>
-        <div id="shelf" className="text-center no-books text-xlarge text-white">
+        <div id="shelf" className="text-center no-books bg-latte text-xlarge text-white">
             no books here
         </div>
       </>
