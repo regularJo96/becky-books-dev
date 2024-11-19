@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/becky-books-dev/static/css/main.cd5aab10.css",
-    "main.js": "/becky-books-dev/static/js/main.031cae0d.js",
+    "main.css": "/becky-books-dev/static/css/main.e49a2833.css",
+    "main.js": "/becky-books-dev/static/js/main.4a19a72d.js",
     "static/js/787.3bf0dcc2.chunk.js": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js",
     "static/media/the-book-thief.jpg": "/becky-books-dev/static/media/the-book-thief.ea5e230a8ec8284cba0f.jpg",
     "index.html": "/becky-books-dev/index.html",
-    "main.cd5aab10.css.map": "/becky-books-dev/static/css/main.cd5aab10.css.map",
-    "main.031cae0d.js.map": "/becky-books-dev/static/js/main.031cae0d.js.map",
+    "main.e49a2833.css.map": "/becky-books-dev/static/css/main.e49a2833.css.map",
+    "main.4a19a72d.js.map": "/becky-books-dev/static/js/main.4a19a72d.js.map",
     "787.3bf0dcc2.chunk.js.map": "/becky-books-dev/static/js/787.3bf0dcc2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd5aab10.css",
-    "static/js/main.031cae0d.js"
+    "static/css/main.e49a2833.css",
+    "static/js/main.4a19a72d.js"
   ]
 }
