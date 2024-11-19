@@ -27,15 +27,15 @@ function Shelf(props){
   if(props.books.length == 0){
     return(
       <>
-        <div className="text-center text-xlarge text-white">
-            no books
+        <div id="shelf" className="text-center no-books text-xlarge text-white">
+            no books here
         </div>
       </>
     );
   } else {
     return(
       <>  
-        <div className={`book-container w-75 bg-latte ${shelfHide}`}>
+        <div id="shelf" className={`book-container w-75 bg-latte ${shelfHide}`}>
       
           {
             (props.books).map(function(book){

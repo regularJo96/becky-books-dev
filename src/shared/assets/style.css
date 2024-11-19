@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 1rem;
+}
+
 div{
     user-select: none;
 }

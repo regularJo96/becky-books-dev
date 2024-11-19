@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef} from "react";
 
 import AddBookManually from "../addBookManually/AddBookManually";
 import AddBook from "../addBook/AddBook";
@@ -18,18 +18,24 @@ function App() {
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
   const [location, setLocation] = useState("shelf")
+  const [shelfLoading, setShelfLoading] = useState(true);
+
+  const myRef = useRef(null);
 
   useEffect(() => {
     getBooks();
+
   }, [shelfContext]);
 
-  function getBooks() {
-      fetch(`${API_URL}/${shelfContext}`)
+ function getBooks() {
+      
+       fetch(`${API_URL}/${shelfContext}`)
       .then(response => {
         return response.json();
       })
       .then(data => {
         setBooks(data);
+        
       });
   }
   
@@ -145,10 +151,18 @@ function App() {
     return (
       <>
         <div>
-          <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
-          <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
-          <AddBook addToShelf={addToShelf} apiUrl={API_URL} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
-          <Shelf books={books} moveToShelf={moveToShelf} addToShelf={addToShelf} apiUrl={API_URL} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>
+          <div id="infobar">
+            <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
+          </div>
+          <div id="shelfbar">
+            <ShelfBar shelfContext={shelfContext} setShelfContext={setShelfContext}/>
+          </div>
+          <div id="addbook">
+            <AddBook addToShelf={addToShelf} apiUrl={API_URL} location={location} setLocation={setLocation} shelfContext={shelfContext}/>
+          </div>
+          <div>
+            <Shelf books={books} moveToShelf={moveToShelf} addToShelf={addToShelf} apiUrl={API_URL} deleteBook={deleteBook} shelfContext={shelfContext} location={location}/>  
+          </div>
         </div>
       </>
     );
