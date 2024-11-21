@@ -59,7 +59,7 @@ function InfoBar(props){
             becky's books
           </div>
   
-          <div id="shelves" className={`${shelvesActiveStyle} ${shelvesHighlight}`} onClick={setBookshelf} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => handleHighlight(e.target, false)}>Bookshelves</div>
+          <div id="shelves" className={`${shelvesActiveStyle} ${shelvesHighlight}`} onClick={setBookshelf}>Bookshelves</div>
           <div id="blog" className={`${defaultStyle} ${blogHighlight}`} onClick={setBlog} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}}>blog</div>
         </div>
       </>
@@ -76,7 +76,7 @@ function InfoBar(props){
           </div>
 
           <div id="shelves" className={`${defaultStyle} ${shelvesHighlight}`} onClick={setBookshelf} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => handleHighlight(e.target, false)}>Bookshelves</div>
-          <div id="blog" className={`${blogActiveStyle} ${blogHighlight}`} onClick={setBlog} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}}>blog</div>
+          <div id="blog" className={`${blogActiveStyle} ${blogHighlight}`} onClick={setBlog}>blog</div>
         </div>
       </>
     );
