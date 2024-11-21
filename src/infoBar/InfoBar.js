@@ -4,7 +4,31 @@ import "../shared/assets/style.css"
 
 function InfoBar(props){
   var defaultStyle = "button rounded text-white text-center pointer menu-item";
-  var activeStyle = "button rounded border-white btn-clicked text-center pointer menu-item";
+  
+  const [shelvesHighlight, setShelvesHighlight] = useState("");
+  const [blogHighlight, setBlogHighlight] = useState("");
+  const [shelvesActiveStyle, setShelvesActiveStyle]= useState("button rounded border-white btn-clicked text-center pointer menu-item");
+  const [blogActiveStyle, setblogActiveStyle] = useState("button rounded border-white btn-clicked text-center pointer menu-item");
+
+  const handleHighlight = (e, highlight) => {
+    if(e.id=="shelves"){
+      if(highlight){
+        setShelvesActiveStyle("button rounded border-white text-center pointer menu-item");
+        setShelvesHighlight("highlight");
+      } else{
+        setShelvesHighlight("");
+        setShelvesActiveStyle("button rounded border-white btn-clicked text-center pointer menu-item");
+      }
+    } else{
+      if(highlight){
+        setblogActiveStyle("button rounded border-white text-center pointer menu-item");
+        setBlogHighlight("highlight");
+      } else{
+        setBlogHighlight("");
+        setblogActiveStyle("button rounded border-white btn-clicked text-center pointer menu-item");
+      }
+    }
+  }
 
   const scrollDown = (id) => {
     const element = document.getElementById(id);
@@ -35,8 +59,8 @@ function InfoBar(props){
             becky's books
           </div>
   
-          <div id="shelves" className={activeStyle} onClick={setBookshelf}>Bookshelves</div>
-          <div id="blog" className={defaultStyle} onClick={setBlog}>blog</div>
+          <div id="shelves" className={`${shelvesActiveStyle} ${shelvesHighlight}`} onClick={setBookshelf} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => handleHighlight(e.target, false)}>Bookshelves</div>
+          <div id="blog" className={`${defaultStyle} ${blogHighlight}`} onClick={setBlog} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}}>blog</div>
         </div>
       </>
     );
@@ -51,8 +75,8 @@ function InfoBar(props){
             becky's books
           </div>
 
-          <div id="shelves" className={defaultStyle} onClick={setBookshelf}>Bookshelves</div>
-          <div id="blog" className={activeStyle} onClick={setBlog}>blog</div>
+          <div id="shelves" className={`${defaultStyle} ${shelvesHighlight}`} onClick={setBookshelf} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => handleHighlight(e.target, false)}>Bookshelves</div>
+          <div id="blog" className={`${blogActiveStyle} ${blogHighlight}`} onClick={setBlog} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}}>blog</div>
         </div>
       </>
     );

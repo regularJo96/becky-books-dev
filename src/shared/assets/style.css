@@ -182,6 +182,10 @@ img{
     align-items: center;
 }
 
+.highlight{
+    background-color: #6974a2a7;
+}
+
 @media (hover: hover) {
     button:hover{
     background-color: #6974a2a7;
