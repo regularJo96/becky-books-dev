@@ -56,6 +56,7 @@ function AddBook(props){
 
     const addOpen = (open) => {
         if(open){
+            setAddBookHighlight("bg-wine");
             setAddBookActive(true);
         }
         else{
@@ -77,6 +78,7 @@ function AddBook(props){
 
     const handleFormOpen = (open) => {
         if(open){
+            setAddBookManuallyHighlight("bg-wine");
             setFormOpen(true);
             setSearchOpen(false);
         } else{
