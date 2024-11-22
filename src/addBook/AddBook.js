@@ -14,6 +14,45 @@ function AddBook(props){
     const [addBookActive, setAddBookActive] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const [formOpen, setFormOpen] = useState(false);
+    const [addBookHighlight, setAddBookHighlight] = useState("bg-wine");
+    const [addBookManuallyHighlight, setAddBookManuallyHighlight] = useState("bg-wine");
+    const [addBookSearchHighlight, setAddBookSearchHighlight] = useState("bg-wine");
+
+
+    const handleHighlight = (e, highlight) => {
+        if(e.id=="add-book"){
+            if(highlight){
+                setAddBookHighlight("highlight");
+            } 
+            else{
+                setAddBookHighlight("bg-wine");
+            }
+        }
+        else if(e.id=="add-book-manually"){
+            if(highlight){
+                setAddBookManuallyHighlight("highlight");
+            } 
+            else{
+                setAddBookManuallyHighlight("bg-wine");
+            }
+        }
+        else if(e.id=="add-book-search"){
+            if(highlight){
+                setAddBookSearchHighlight("highlight");
+            } 
+            else{
+                setAddBookSearchHighlight("bg-wine");
+            }
+        }
+        else if(e.id=="add-book-search-icon"){
+            if(highlight){
+                setAddBookSearchHighlight("highlight");
+            } 
+            else{
+                setAddBookSearchHighlight("bg-wine");
+            }
+        }
+    }
 
     const addOpen = (open) => {
         if(open){
@@ -26,6 +65,7 @@ function AddBook(props){
 
     const handleSearchOpen = (open) => {
         if(open){
+            setAddBookSearchHighlight("bg-wine")
             setSearchOpen(true);
             setFormOpen(false);
             props.setLocation("search");
@@ -77,8 +117,6 @@ function AddBook(props){
         } else {
             return (
                 <>  
-
-                    
                     <div className="button center arrow">
                         <span className="material-symbols-outlined pointer" onClick={(() => addOpen(false))}>
                             arrow_back_ios
@@ -86,13 +124,13 @@ function AddBook(props){
                     </div>
 
                     <div className="add-book-menu">
-                        <div id="search" className="button rounded border-white text-white bg-wine text-center pointer" onClick={(() => handleSearchOpen(true))}>
+                        <div id="add-book-search" className={`button rounded border-white text-white text-center pointer ${addBookSearchHighlight}`} onClick={(() => handleSearchOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}} onMouse>
                             <span className="search-prompt pointer" onClick={(() => handleSearchOpen(true))}>Search for a Book</span>
-                            <span className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
+                            <span id="add-book-search-icon" className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
                                 search
                             </span>
                         </div>
-                        <div className="button rounded border-white text-white bg-wine text-center pointer" onClick={(() => handleFormOpen(true))}>
+                        <div id="add-book-manually" className={`button rounded border-white text-white text-center pointer ${addBookManuallyHighlight}`} onClick={(() => handleFormOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
                             Add A book manually
                         </div>
                     </div>
@@ -104,7 +142,7 @@ function AddBook(props){
         return (
             <>
                 <div className="add-book">
-                    <div className="button rounded border-white text-white bg-wine text-center center pointer w-50" onClick={(() => addOpen(true))}>
+                    <div id="add-book" className={`button rounded border-white text-white text-center center pointer w-50 ${addBookHighlight}`} onClick={(() => addOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
                         Add A Book
                     </div>
                 </div>
