@@ -98,9 +98,9 @@ var activeStyle = "button shelf-item rounded border-white text-white bg-wine tex
             <span className="material-symbols-outlined" style={{"z-index": "-1"}} onClick={() => handleShelfChange("to-read")}>favorite</span>
           </div>
           <div id="am-reading" className={activeStyle} onClick={() => handleShelfChange("am-reading")} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
-          <span className="material-symbols-outlined" style={{"z-index": "-1"}} onClick={() => handleShelfChange("am-reading")}>menu_book</span>
+          <span className="material-symbols-outlined" onClick={() => handleShelfChange("am-reading")}>menu_book</span>
             Am Reading
-            <span className="material-symbols-outlined" style={{"z-index": "-1"}} onClick={() => handleShelfChange("am-reading")}>menu_book</span>
+            <span className="material-symbols-outlined" onClick={() => handleShelfChange("am-reading")}>menu_book</span>
           </div>
           <div ref={myRef} id="have-read" className={`${defaultStyle} ${haveReadHighlight}`} onClick={() => handleShelfChange("have-read")} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
           <span className="material-symbols-outlined" style={{"z-index": "-1"}} onClick={() => handleShelfChange("have-read")}>check_circle</span>
