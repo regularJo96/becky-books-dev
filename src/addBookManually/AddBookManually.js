@@ -27,6 +27,8 @@ const handleHighlight = (e, highlight) => {
 const addBook = (event) => {
     event.preventDefault();
 
+    setButtonHighlight("bg-wine")
+
     //"favorite", "menu_book", "check_circle"
     if(bookShelf != "favorite" && bookShelf != "menu_book" && bookShelf != "check_circle"){
         alert("FATAL ERROR. Select a shelf!")
