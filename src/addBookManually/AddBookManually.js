@@ -11,6 +11,7 @@ function AddBookManually(props){
   const [bookAuthor, setBookAuthor] = useState();
   const [bookDescription, setBookDescription] = useState();
   const [bookShelf, setBookShelf] = useState("Shelf")
+  const [formStyle, setFormStyle] = useState({"border": "none", "border-bottom": "2px solid #722f37"});
 //   const [bookCover, setBookCover] = useState()
 
 const addBook = (event) => {
@@ -31,9 +32,9 @@ const addBook = (event) => {
             <div className="container">
                 <div className="form-title">Add Book Manually</div>
                 <form className="add-book-custom-form" onSubmit={addBook}>
-                    <input type="text" placeholder='Add Title' value={bookTitle} onChange={e => setBookTitle(e.target.value)}/>
-                    <input type="text" placeholder='Add Author' value={bookAuthor} onChange={e => setBookAuthor(e.target.value)}/>
-                    <input type="text" placeholder='Add Description' value={bookDescription} onChange={e => setBookDescription(e.target.value)}/>
+                    <input style={formStyle} type="text" placeholder='Add Title' value={bookTitle} onChange={e => setBookTitle(e.target.value)}/>
+                    <input style={formStyle} type="text" placeholder='Add Author' value={bookAuthor} onChange={e => setBookAuthor(e.target.value)}/>
+                    <input style={formStyle} type="text" placeholder='Add Description' value={bookDescription} onChange={e => setBookDescription(e.target.value)}/>
                     <label>
                         <select classname="row justify-content-center" id="shelfSelect" value={bookShelf} onChange={e => setBookShelf(e.target.value)}>
                             <option value="">Select Shelf</option>

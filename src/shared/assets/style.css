@@ -48,6 +48,10 @@ div{
     margin: auto;
 }
 
+.wine{
+    border-color: #722f37
+}
+
 .bg-wine{
     background-color: #722f37;
 }
