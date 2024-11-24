@@ -12,7 +12,17 @@ function AddBookManually(props){
   const [bookDescription, setBookDescription] = useState();
   const [bookShelf, setBookShelf] = useState("Shelf")
   const [formStyle, setFormStyle] = useState({"border": "none", "border-bottom": "2px solid #722f37"});
+  const [buttonHighlight, setButtonHighlight] = useState("bg-wine");
 //   const [bookCover, setBookCover] = useState()
+
+const handleHighlight = (e, highlight) => {
+    if(highlight){
+        setButtonHighlight("highlight");
+    }
+    else {
+        setButtonHighlight("bg-wine")
+    }
+}
 
 const addBook = (event) => {
     event.preventDefault();
@@ -43,7 +53,7 @@ const addBook = (event) => {
                             <option value={"check_circle"}>Have Read</option>
                         </select>
                     </label>
-                    <button type="submit" className="button border-latte bg-wine text-white text-center pointer">Add Book</button>
+                    <button type="submit" className={`button border-latte text-white text-center pointer ${buttonHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Add Book</button>
                 </form>
             </div>
         </>
