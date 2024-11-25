@@ -1,0 +1,3 @@
+when clicking 'blog' then navigating back to shelves, the shelf selected when moved to 
+blog is persisted, however, the 'to-read' button is hihglighted no matter what shelf 
+is actively rendered 

@@ -10,7 +10,7 @@ var activeStyle = "button shelf-item rounded border-white text-white bg-wine tex
 
 
   // shelfContext can be set with props.setShelfContext
-  const [shelf, setShelf] = useState("to-read");
+  const [shelf, setShelf] = useState(props.shelfContext);
   const [toReadActiveStyle, setToReadActiveStyle] = useState("button shelf-item rounded border-white text-white bg-wine text-center pointer")
   const [amReadingActiveStyle, setAmReadingActiveStyle] = useState("button shelf-item rounded border-white text-white bg-wine text-center pointer")
   const [haveReadActiveStyle, setHaveReadActiveStyle] = useState("button shelf-item rounded border-white text-white bg-wine text-center pointer")
@@ -59,7 +59,9 @@ var activeStyle = "button shelf-item rounded border-white text-white bg-wine tex
   };
 
   const handleShelfChange = (id) =>  {
-
+    if(props.shelfContext==id){
+      console.log("wiggle")
+    }
     props.setShelfContext(id);
     setShelf(id);
     scrollToAddBook(shelf);
