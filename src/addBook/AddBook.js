@@ -52,6 +52,14 @@ function AddBook(props){
                 setAddBookSearchHighlight("bg-wine");
             }
         }
+        else if (e.id=="add-book-search-prompt"){
+            if(highlight){
+                setAddBookSearchHighlight("highlight");
+            } 
+            else{
+                setAddBookSearchHighlight("bg-wine");
+            }
+        }
     }
 
     const addOpen = (open) => {
@@ -126,9 +134,11 @@ function AddBook(props){
                     </div>
 
                     <div className="add-book-menu">
-                        <div id="add-book-search" className={`button rounded border-white text-white text-center pointer ${addBookSearchHighlight}`} onClick={(() => handleSearchOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}} onMouse>
-                            <span className="search-prompt pointer" onClick={(() => handleSearchOpen(true))}>Search for a Book</span>
-                            <span id="add-book-search-icon" className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))}>
+                        <div id="add-book-search" className={`button rounded border-white text-white text-center pointer ${addBookSearchHighlight}`} onClick={(() => handleSearchOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
+                            <span id="add-book-search-prompt" className="search-prompt pointer" onClick={(() => handleSearchOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
+                                Search for a Book
+                            </span>
+                            <span id="add-book-search-icon" className="material-symbols-outlined pointer" onClick={(() => handleSearchOpen(true))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
                                 search
                             </span>
                         </div>

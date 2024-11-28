@@ -1,3 +1,10 @@
 when clicking 'blog' then navigating back to shelves, the shelf selected when moved to 
 blog is persisted, however, the 'to-read' button is hihglighted no matter what shelf 
 is actively rendered 
+FIXED
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+when hovering over some buttons, (specifically noticed on the "Search for a Book" button)
+the highlight is not acting as expected: the highlight sometimes highlights, sometimes doesnt
+the highlight sometimes persists after hover is finished.
