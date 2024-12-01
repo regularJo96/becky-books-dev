@@ -15,7 +15,8 @@ import "../shared/assets/background_colors.css"
 function App() {
 
   const [API_URL, setAPI_URL] = useState("http://localhost:3001");
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]); // books from a specific shelf
+  const [allBooks, setAllBooks] = useState([])
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
   const [location, setLocation] = useState("shelf")
@@ -39,6 +40,17 @@ function App() {
         
       });
   }
+
+  function getAllBooks() {
+      
+    fetch(`${API_URL}/all-books`)
+   .then(response => {
+     return response.json();
+   })
+   .then(data => {
+     setAllBooks(data);
+   });
+}
   
   const addToShelf = (title, author, description, shelf) => {
     let id = ""
@@ -172,7 +184,7 @@ function App() {
       <>
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
-          <Blog />
+          <Blog allBooks={allBooks} getAllBooks={getAllBooks}/>
         </div>
       </>
     );
