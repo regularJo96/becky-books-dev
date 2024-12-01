@@ -42,7 +42,7 @@ function Blog(props){
           <></>
 
             <label for="shelfSelect">Is this blog post related to a book on one of your shelves?</label>
-            <select classname="row justify-content-center form-item" id="shelfSelect" value={blogBook} onChange={e => setBlogBook(e.target.value)}>
+            <select classname="form-item" id="shelfSelect" value={blogBook} onChange={e => setBlogBook(e.target.value)}>
               <option value="">Select Book</option>
               <option value="No">No</option>
                 {
