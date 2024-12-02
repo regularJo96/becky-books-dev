@@ -15,8 +15,12 @@
     color:white;
     text-align: center;
     margin: auto;
+    width: 100%;
 }
 
+.form-control{
+    height: 10px;
+}
 
 
 .container{

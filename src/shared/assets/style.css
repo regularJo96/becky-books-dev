@@ -65,11 +65,19 @@ div{
 }
 
 .bg-blue{
-    background-color: #0061c2cc;
+    background-color: #00376dcc;
 }
 
 .bg-white{
     background-color: white;
+}
+
+.bg-reddish{
+    background-color: rgb(167, 93, 93);
+}
+
+.bg-dark{
+    background-color: rgb(54, 44, 44);
 }
 
 .text-white{
