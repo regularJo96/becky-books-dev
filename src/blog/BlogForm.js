@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import "../shared/assets/style.css"
-import "./Blog.css"
+import "./BlogForm.css"
 
 
 function Blog(props){
@@ -19,8 +19,9 @@ function Blog(props){
 
   }
 
-  const handleSubmit = () => {
-    console.log(blogBody)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Blog entry posted");
   }
 
   return(

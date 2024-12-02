@@ -5,7 +5,7 @@ import AddBook from "../addBook/AddBook";
 import InfoBar from "../infoBar/InfoBar";
 import ShelfBar from "../shelf/ShelfBar";
 import Shelf from "../shelf/Shelf";
-import Blog from "../blog/Blog";
+import BlogForm from "../blog/BlogForm";
 
 import "../shared/assets/style.css"
 import "../shared/assets/background_colors.css"
@@ -184,7 +184,7 @@ function App() {
       <>
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
-          <Blog allBooks={allBooks} getAllBooks={getAllBooks}/>
+          <BlogForm allBooks={allBooks} getAllBooks={getAllBooks}/>
         </div>
       </>
     );
