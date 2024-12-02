@@ -89,8 +89,10 @@ function AddBook(props){
             setAddBookManuallyHighlight("bg-wine");
             setFormOpen(true);
             setSearchOpen(false);
+            props.setLocation("manual-form-open");
         } else{
             setFormOpen(false);
+            props.setLocation("shelf")
         }
     }
 

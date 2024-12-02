@@ -18,6 +18,9 @@ function Shelf(props){
   function handleBookShelfState(){
     if(props.location == "search"){
       setShelfhide("hidden")
+    } 
+    else if(props.location == "manual-form-open"){
+      setShelfhide("hidden")
     }
     else{
       setShelfhide("");
