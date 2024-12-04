@@ -41,7 +41,7 @@ const addBook = (event) => {
 
     return(
         <>
-            <div className="container bg-blue">
+            <div className="container bg-latte">
                 
                 <form className="add-book-custom-form" onSubmit={addBook}>
                     <div className="form-title text-white bg-wine">Add Book Manually</div>
