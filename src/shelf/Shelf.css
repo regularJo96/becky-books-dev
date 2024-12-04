@@ -1,13 +1,12 @@
-
 .book-container{
     display: grid;
     grid-template-columns: auto auto auto;
-
     column-gap: 10px;
     row-gap: 50px;
     background-color: #f8ffcd;
     padding: 10px;
     padding-top: 50px;
+    padding-bottom: 50px;
     margin: auto;
 }
 

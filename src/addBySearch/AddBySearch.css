@@ -1,3 +1,13 @@
+/* .search-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100%);
+  justify-content: space-between;
+  place-items: center;
+  grid-gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+} */
+
 .default{
   display: block;
   padding-left: 200px;
@@ -17,10 +27,16 @@
   color:white;
   text-align: center;
   margin: auto;
+  /* padding-top: 30px; */
+  margin-bottom: 30px;
 }
 
 .bg-antiquewhite{
   background-color: antiquewhite;
+}
+
+.big{
+  height: 60px;
 }
 
 .search-results{

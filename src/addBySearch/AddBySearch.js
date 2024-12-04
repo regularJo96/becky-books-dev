@@ -55,9 +55,12 @@ function AddBySearch(props){
   
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className={`button border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
+              <form className="search-bar" onSubmit={findBooks}>
+                  <div className="form-floating">
+                    <input id="search-input" className="form-control" type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                    <label for="search-input">Search for title/author/isbn/etc.</label>
+                  </div>
+                  <button type="submit" className={`button big border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
                 </form>
               
               </div>
@@ -72,15 +75,18 @@ function AddBySearch(props){
         return(
           <>
            
-           <div className="search">
-              search OpenLibrary
-            </div>
+           <div className="search bg-wine">
+                search OpenLibrary
+              </div>
   
             <div className="container w-75">
               <div>
                 <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className={`button border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
+                  <div className="form-floating">
+                    <input id="search-input" className="form-control" type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                    <label for="search-input">Search for title/author/isbn/etc.</label>
+                  </div>
+                  <button type="submit" className={`button big border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
                 </form>
              
               </div>
@@ -106,9 +112,12 @@ function AddBySearch(props){
 
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className={`button border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
+              <form className="search-bar" onSubmit={findBooks}>
+                  <div className="form-floating">
+                    <input id="search-input" className="form-control" type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                    <label for="search-input">Search for title/author/isbn/etc.</label>
+                  </div>
+                  <button type="submit" className={`button big border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
                 </form>
 
               </div>
@@ -131,9 +140,12 @@ function AddBySearch(props){
 
             <div className="container w-75">
               <div>
-                <form className="search-bar" onSubmit={findBooks}>
-                  <input type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
-                  <button type="submit" className={`button border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
+              <form className="search-bar" onSubmit={findBooks}>
+                  <div className="form-floating">
+                    <input id="search-input" className="form-control" type="text" placeholder='Search for title/author/isbn/etc.' value={searchStr} onChange={e => setSearchStr(e.target.value)}/>
+                    <label for="search-input">Search for title/author/isbn/etc.</label>
+                  </div>
+                  <button type="submit" className={`button big border-latte text-white text-center pointer ${searchHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Retrieve Books</button>
                 </form>
                 
               </div>
