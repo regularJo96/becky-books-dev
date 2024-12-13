@@ -6,7 +6,7 @@ import "./BlogForm.css"
 function Blog(props){
 
   const [blogTitle, setBlogTitle] = useState("");
-  const [blogBook, setBlogBook] = useState("N/A");
+  const [blogBook, setBlogBook] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
   const [blogBody, setBlogBody] = useState("");
   const [buttonHighlight, setButtonHighlight] = useState("bg-wine")
@@ -21,7 +21,28 @@ function Blog(props){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Blog entry posted");
+    console.log("here")
+    // var element = document.querySelector("trix-editor")
+
+    // console.log(element.editor.getDocument().toString())
+
+    setBlogBody(document.getElementById("trix").value);
+  
+    console.log(blogBody)
+  
+    let result=true;
+
+    if(blogBook=="0"){
+      setBlogBook(0);
+    } 
+    else if(blogBook=="Select Book"){
+      alert("You must select an option from the dropdown menu!");
+      result=false;
+    }
+
+    if(result){
+      props.addArticle(blogTitle, blogDescription, blogBook, blogBody);
+    }
   }
 
   return(
@@ -40,12 +61,10 @@ function Blog(props){
             <label for="blog-post-description">Description (can leave blank)</label>
           </div>
 
-          <></>
-
             <label for="shelfSelect">Is this blog post related to a book on one of your shelves?</label>
             <select classname="form-item" id="shelfSelect" value={blogBook} onChange={e => setBlogBook(e.target.value)}>
-              <option value="">Select Book</option>
-              <option value="No">No</option>
+              <option value="Select Book">Select Book</option>
+              <option value="0">No</option>
                 {
                   (props.allBooks).map(function(book){
                     // let offset = 13 - book.shelf.length
@@ -63,9 +82,9 @@ function Blog(props){
                 }
             </select>
 
-          <input id="blogBodyHidden" type="hidden" name="content"></input>
+          <input id="blogBodyHidden" type="hidden" value={blogBody} onChange={() => {console.log("hi")}}></input>
           
-          <trix-editor input="blogBodyHidden" onChange={e => setBlogBody(e.target.input)}></trix-editor>
+          <trix-editor id="trix" input="blogBodyHidden" value={blogBody}></trix-editor>
           
           <button type="submit" className={`button border-latte text-white text-center pointer ${buttonHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Post Blog</button>
         

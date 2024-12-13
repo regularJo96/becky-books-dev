@@ -10,6 +10,8 @@ import BlogForm from "../blog/BlogForm";
 import "../shared/assets/style.css"
 import "../shared/assets/background_colors.css"
 
+// const booksController = require("./controllers/books/books_controller.js");
+
 
 
 function App() {
@@ -29,17 +31,16 @@ function App() {
 
   }, [shelfContext]);
 
- function getBooks() {
+  const getBooks = () => {
       
-       fetch(`${API_URL}/${shelfContext}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        setBooks(data);
-        
-      });
-  }
+    fetch(`${API_URL}/${shelfContext}`)
+   .then(response => {
+     return response.json();
+   })
+   .then(data => {
+     setBooks(data);
+   });
+}
 
   function getAllBooks() {
       
@@ -159,6 +160,25 @@ function App() {
         });
     }
   }
+
+  const addArticle = (title, description, book_id, content) => {
+
+    console.log("BLOG TRYIN")
+    fetch(`${API_URL}/add-article`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({title, description, book_id, content}),
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        alert(`blog posted!`);
+        console.log(data);
+      });
+  }
   
   if(infoBarContext=="bookshelf"){
     return (
@@ -184,7 +204,7 @@ function App() {
       <>
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
-          <BlogForm allBooks={allBooks} getAllBooks={getAllBooks}/>
+          <BlogForm allBooks={allBooks} getAllBooks={getAllBooks} addArticle={addArticle}/>
         </div>
       </>
     );
