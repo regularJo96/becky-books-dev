@@ -1,6 +1,7 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef} from "react";
 import "../shared/assets/style.css"
 import "./BlogForm.css"
+import Trix from "trix";
 
 
 function Blog(props){
@@ -11,9 +12,26 @@ function Blog(props){
   const [blogBody, setBlogBody] = useState("");
   const [buttonHighlight, setButtonHighlight] = useState("bg-wine")
 
+  const myRef = useRef(null);
+
   useEffect(() => {
     props.getAllBooks();
+    const trixEditor = myRef.current;
+    trixEditor.addEventListener("trix-change", trixChange);
+
+    return () => {
+      trixEditor.removeEventListener("trix-change", trixChange);;
+    };
   }, []);
+
+  // useEffect(() => {
+  //   console.log("yes")
+  // }, [myRef.current.target])
+
+  const trixChange = (e) =>{
+    setBlogBody(e.target.value)
+    // console.blog(blogBody)
+  }
 
   const handleHighlight = () => {
 
@@ -21,14 +39,6 @@ function Blog(props){
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("here")
-    // var element = document.querySelector("trix-editor")
-
-    // console.log(element.editor.getDocument().toString())
-
-    setBlogBody(document.getElementById("trix").value);
-  
-    console.log(blogBody)
   
     let result=true;
 
@@ -82,9 +92,9 @@ function Blog(props){
                 }
             </select>
 
-          <input id="blogBodyHidden" type="hidden" value={blogBody} onChange={() => {console.log("hi")}}></input>
+          <input type="hidden" id="blogBodyHidden" value={blogBody}></input>
           
-          <trix-editor id="trix" input="blogBodyHidden" value={blogBody}></trix-editor>
+          <trix-editor id="trix" input="blogBodyHidden" value={blogBody} ref={myRef}/>
           
           <button type="submit" className={`button border-latte text-white text-center pointer ${buttonHighlight}`} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>Post Blog</button>
         

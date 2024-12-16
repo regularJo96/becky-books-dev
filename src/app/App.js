@@ -163,7 +163,6 @@ function App() {
 
   const addArticle = (title, description, book_id, content) => {
 
-    console.log("BLOG TRYIN")
     fetch(`${API_URL}/add-article`, {
       method: 'POST',
       headers: {
