@@ -16,7 +16,7 @@ import "../shared/assets/background_colors.css"
 
 function App() {
 
-  const [API_URL, setAPI_URL] = useState("https://becky-books-server-c0824434b9bb.herokuapp.com/");
+  const [API_URL, setAPI_URL] = useState("https://becky-books-server-c0824434b9bb.herokuapp.com");
   const [books, setBooks] = useState([]); // books from a specific shelf
   const [allBooks, setAllBooks] = useState([])
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
