@@ -17,14 +17,14 @@ import "../shared/assets/background_colors.css"
 
 function App() {
 
-  const [API_URL, setAPI_URL] = useState("https://becky-books-server-c0824434b9bb.herokuapp.com");
+  const [API_URL, setAPI_URL] = useState("http//localhost:3000");
   const [books, setBooks] = useState([]); // books from a specific shelf
   const [allBooks, setAllBooks] = useState([])
   const [infoBarContext, setInfoBarContext] = useState("bookshelf");
   const [shelfContext, setShelfContext] = useState("to-read");
   const [location, setLocation] = useState("shelf")
   const [shelfLoading, setShelfLoading] = useState(true);
-  const [blogs, setBlogs] = useState();
+  const [blogs, setBlogs] = useState([]);
 
   const myRef = useRef(null);
 
@@ -219,13 +219,8 @@ function App() {
   //     })
   // }
 
-  const getAllArticles = () => {
-    fetch(`${API_URL}/all-articles`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
+  async function getAllArticles(){
+    await fetch(`${API_URL}/all-articles`)
       .then(response => {
         return response.json();
       })
@@ -235,6 +230,7 @@ function App() {
       })
       .catch(error => {
         console.log(error.message);
+        console.log("There was an issue getting blogs")
       })
   }
   
