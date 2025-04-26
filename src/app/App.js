@@ -6,6 +6,7 @@ import InfoBar from "../infoBar/InfoBar";
 import ShelfBar from "../shelf/ShelfBar";
 import Shelf from "../shelf/Shelf";
 import BlogForm from "../blog/BlogForm";
+import BlogIndex from "../blog/BlogIndex";
 
 import "../shared/assets/style.css"
 import "../shared/assets/background_colors.css"
@@ -23,17 +24,37 @@ function App() {
   const [shelfContext, setShelfContext] = useState("to-read");
   const [location, setLocation] = useState("shelf")
   const [shelfLoading, setShelfLoading] = useState(true);
+  const [blogs, setBlogs] = useState();
 
   const myRef = useRef(null);
+
+  // useEffect(() => {
+  //   setInfoBarContext("bookshelf");
+  // }, []);
+
+  // useEffect(() => {
+  //     console.log(infoBarContext)
+  //     if(infoBarContext=="blog"){
+  //       getAllArticles();
+  //       console.log(blogs)
+  //     }
+  // }, [infoBarContext]);
+
+  useEffect(() => {
+    getBooks();
+    getAllArticles();
+    getAllBooks()
+
+  }, []);
 
   useEffect(() => {
     getBooks();
 
   }, [shelfContext]);
 
-  const getBooks = () => {
+  const getBooks = async () => {
       
-    fetch(`${API_URL}/${shelfContext}`)
+    await fetch(`${API_URL}/${shelfContext}`)
    .then(response => {
      return response.json();
    })
@@ -42,9 +63,9 @@ function App() {
    });
 }
 
-  function getAllBooks() {
+  async function getAllBooks() {
       
-    fetch(`${API_URL}/all-books`)
+    await fetch(`${API_URL}/all-books`)
    .then(response => {
      return response.json();
    })
@@ -178,6 +199,44 @@ function App() {
         console.log(data);
       });
   }
+
+  // const getBook = (id) => {
+  //   fetch(`${API_URL}/book/${id}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       setBlogs(data);
+  //       console.log(data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error.message);
+  //     })
+  // }
+
+  const getAllArticles = () => {
+    fetch(`${API_URL}/all-articles`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setBlogs(data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+  }
   
   if(infoBarContext=="bookshelf"){
     return (
@@ -203,7 +262,7 @@ function App() {
       <>
         <div>
           <InfoBar infoBarContext={infoBarContext} setInfoBarContext={setInfoBarContext}/>
-          <BlogForm allBooks={allBooks} getAllBooks={getAllBooks} addArticle={addArticle}/>
+          <BlogIndex blogs={blogs} allBooks={allBooks} addArticle={addArticle} getAllArticles={getAllArticles}/>
         </div>
       </>
     );

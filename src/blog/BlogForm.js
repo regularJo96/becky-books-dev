@@ -4,10 +4,10 @@ import "./BlogForm.css"
 import Trix from "trix";
 
 
-function Blog(props){
+function BlogForm(props){
 
   const [blogTitle, setBlogTitle] = useState("");
-  const [blogBook, setBlogBook] = useState("");
+  const [blogBook, setBlogBook] = useState("Select Book");
   const [blogDescription, setBlogDescription] = useState("");
   const [blogBody, setBlogBody] = useState("");
   const [buttonHighlight, setButtonHighlight] = useState("bg-wine")
@@ -15,7 +15,7 @@ function Blog(props){
   const myRef = useRef(null);
 
   useEffect(() => {
-    props.getAllBooks();
+    // props.getAllBooks();
     const trixEditor = myRef.current;
     trixEditor.addEventListener("trix-change", trixChange);
 
@@ -43,7 +43,7 @@ function Blog(props){
     let result=true;
 
     if(blogBook=="0"){
-      setBlogBook(0);
+      setBlogBook(null);
     } 
     else if(blogBook=="Select Book"){
       alert("You must select an option from the dropdown menu!");
@@ -52,6 +52,7 @@ function Blog(props){
 
     if(result){
       props.addArticle(blogTitle, blogDescription, blogBook, blogBody);
+      props.setBlogFormOpen(false)
     }
   }
 
@@ -105,4 +106,4 @@ function Blog(props){
   );
 }
 
-export default Blog;
+export default BlogForm;

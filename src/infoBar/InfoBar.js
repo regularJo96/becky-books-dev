@@ -47,6 +47,7 @@ function InfoBar(props){
   }
 
   function setBlog(){
+    console.log(props.infoBarContext)
     props.setInfoBarContext("blog");
   }
 
