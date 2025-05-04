@@ -233,6 +233,7 @@ function App() {
       })
       .catch(error => {
         console.log(error.message);
+        console.log("There was an issue getting blogs")
       })
   }
   
