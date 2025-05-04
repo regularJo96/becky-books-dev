@@ -35,7 +35,7 @@ function BlogIndex(props){
             <>
                 <div className="add-book">
                     <div id="add-book" className={`button rounded border-white text-white text-center center pointer w-25 ${highlight}`} onClick={(() => alert("open blog editor"))} onMouseEnter={e => {handleHighlight(e.target, true)}} onMouseLeave={e => {handleHighlight(e.target, false)}} onTouchEnd={e => {handleHighlight(e.target, false)}}>
-                        Add A Book
+                    Write a Blog
                     </div>
                 </div>
 
